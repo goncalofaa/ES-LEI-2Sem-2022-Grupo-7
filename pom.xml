@@ -9,6 +9,7 @@
     <artifactId>jgrapht-core</artifactId>
     <name>JGraphT - Core</name>
     <properties>
+        <!--suppress UnresolvedMavenProperty -->
         <main.basedir>${project.parent.basedir}</main.basedir>
         <excludedGroups>org.jgrapht.SlowTests,org.jgrapht.OptionalTests</excludedGroups>
     </properties>
