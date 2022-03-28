@@ -1,0 +1,4 @@
+package org.jgrapht.perf.lca.generated;
+public class LowestCommonAncestorAlgorithmPerformanceTest_BinaryLiftingLCARandomForestBenchmark_jmhType extends LowestCommonAncestorAlgorithmPerformanceTest_BinaryLiftingLCARandomForestBenchmark_jmhType_B3 {
+}
+
