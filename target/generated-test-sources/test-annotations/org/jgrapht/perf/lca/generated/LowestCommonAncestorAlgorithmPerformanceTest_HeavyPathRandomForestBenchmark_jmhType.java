@@ -1,0 +1,4 @@
+package org.jgrapht.perf.lca.generated;
+public class LowestCommonAncestorAlgorithmPerformanceTest_HeavyPathRandomForestBenchmark_jmhType extends LowestCommonAncestorAlgorithmPerformanceTest_HeavyPathRandomForestBenchmark_jmhType_B3 {
+}
+

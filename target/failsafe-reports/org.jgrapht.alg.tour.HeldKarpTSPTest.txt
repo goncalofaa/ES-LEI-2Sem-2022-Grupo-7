@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.jgrapht.alg.tour.HeldKarpTSPTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 34.142 s - in org.jgrapht.alg.tour.HeldKarpTSPTest

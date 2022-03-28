@@ -1,0 +1,4 @@
+package org.jgrapht.perf.graph.generated;
+public class GraphPerformanceTest_FastLookupDirectedGraphBenchmark_jmhType extends GraphPerformanceTest_FastLookupDirectedGraphBenchmark_jmhType_B3 {
+}
+
