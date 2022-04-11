@@ -240,7 +240,7 @@ public class WeakChordalityInspectorTest
     @Test
     public void testIsWeaklyChordal14()
     {
-        Graph<Integer, DefaultEdge> grötzsch = NamedGraphGenerator.grötzschGraph();
+        Graph<Integer, DefaultEdge> grötzsch = NamedGraphGenerator.grotzschGraph();
         WeakChordalityInspector<Integer, DefaultEdge> inspector =
             new WeakChordalityInspector<>(grötzsch);
         assertFalse(inspector.isWeaklyChordal());

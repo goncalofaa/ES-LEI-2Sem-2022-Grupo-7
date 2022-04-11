@@ -57,9 +57,9 @@ public class GeneralizedPetersenGraphGeneratorTest
     }
 
     @Test
-    public void testDürerGraphGraph()
+    public void testDurerGraphGraph()
     {
-        Graph<Integer, DefaultEdge> g = NamedGraphGenerator.dürerGraph();
+        Graph<Integer, DefaultEdge> g = NamedGraphGenerator.durerGraph();
         this.validateBasics(g, 12, 18, 3, 4, 3);
         assertTrue(GraphTests.isCubic(g));
     }
@@ -91,9 +91,9 @@ public class GeneralizedPetersenGraphGeneratorTest
     }
 
     @Test
-    public void testMöbiusKantorGraph()
+    public void testMobiusKantorGraph()
     {
-        Graph<Integer, DefaultEdge> g = NamedGraphGenerator.möbiusKantorGraph();
+        Graph<Integer, DefaultEdge> g = NamedGraphGenerator.mobiusKantorGraph();
         this.validateBasics(g, 16, 24, 4, 4, 6);
         assertTrue(GraphTests.isCubic(g));
         assertTrue(GraphTests.isBipartite(g));
