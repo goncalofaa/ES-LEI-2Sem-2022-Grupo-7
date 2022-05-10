@@ -51,7 +51,20 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfig build()
     {
-        if (nodeNum <= 0) {
+        build_2RefactorBicho();
+        int tNodeNum = nodeNum - sourceNum - sinkNum;
+        long minArcNum = NetworkGeneratorConfig.getMinimumArcNum(sourceNum, tNodeNum, sinkNum);
+        long maxArcNum = NetworkGeneratorConfig
+            .getMaximumArcNum(sourceNum, tSourceNum, tNodeNum, tSinkNum, sinkNum);
+
+        build_RefactorBicho(minArcNum, maxArcNum);
+        return new NetworkGeneratorConfig(
+            nodeNum, arcNum, sourceNum, sinkNum, tSourceNum, tSinkNum, totalSupply, minCap, maxCap,
+            minCost, maxCost, percentCapacitated, percentWithInfCost);
+    }
+
+	private void build_2RefactorBicho() {
+		if (nodeNum <= 0) {
             invalidParam("Number of nodes must be positive");
         } else if (arcNum <= 0) {
             invalidParam("Number of arcs must be positive");
@@ -77,20 +90,15 @@ public class NetworkGeneratorConfigBuilder
         } else if (minCost > maxCost) {
             invalidParam("Minimum cost must not exceed the maximum cost");
         }
-        int tNodeNum = nodeNum - sourceNum - sinkNum;
-        long minArcNum = NetworkGeneratorConfig.getMinimumArcNum(sourceNum, tNodeNum, sinkNum);
-        long maxArcNum = NetworkGeneratorConfig
-            .getMaximumArcNum(sourceNum, tSourceNum, tNodeNum, tSinkNum, sinkNum);
+	}
 
-        if (arcNum < minArcNum) {
+	private void build_RefactorBicho(long minArcNum, long maxArcNum) {
+		if (arcNum < minArcNum) {
             invalidParam("Too few arcs to generate a valid problem");
         } else if (arcNum > maxArcNum) {
             invalidParam("Too many arcs to generate a valid problem");
         }
-        return new NetworkGeneratorConfig(
-            nodeNum, arcNum, sourceNum, sinkNum, tSourceNum, tSinkNum, totalSupply, minCap, maxCap,
-            minCost, maxCost, percentCapacitated, percentWithInfCost);
-    }
+	}
 
     /**
      * Throws {@code IllegalArgumentException} with the specified {@code message}.

@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="Refactor LongMethod org.jgrapht.generate.GridGraphGenerator.java generateGraph&#10;Tinha um método que a partir de uma lista entrava em 3 for.&#10;Dividi o metodo em 2 refactores que reduziu a complexidade">
-      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/generate/GridGraphGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/generate/GridGraphGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jgrapht/generate/netgen/NetworkGeneratorConfigBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/generate/netgen/NetworkGeneratorConfigBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/generate/netgen/NetworkGeneratorConfigBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/generate/netgen/NetworkGeneratorConfigBuilder.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652190761800</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Refactor LongMethod org.jgrapht.generate.GridGraphGenerator.java generateGraph&#10;Tinha um método que a partir de uma lista entrava em 3 for.&#10;Dividi o metodo em 2 refactores que reduziu a complexidade">
+      <created>1652190895038</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1652190895038</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
