@@ -102,28 +102,38 @@ public class LineGraphConverter<V, E, EE>
     {
         Graphs.addAllVertices(target, graph.edgeSet());
         if (graph.getType().isDirected()) {
-            for (V vertex : graph.vertexSet()) {
-                for (E e1 : graph.incomingEdgesOf(vertex)) {
-                    for (E e2 : graph.outgoingEdgesOf(vertex)) {
-                        EE edge = target.addEdge(e1, e2);
-                        if (weightFunction != null)
-                            target.setEdgeWeight(edge, weightFunction.apply(e1, e2));
-                    }
-                }
-            }
+            convertToLineGraph_RefactorBicho(target, weightFunction);
         } else { // undirected graph
-            for (V v : graph.vertexSet()) {
-                for (E e1 : graph.edgesOf(v)) {
-                    for (E e2 : graph.edgesOf(v)) {
-                        if (e1 != e2) {
-                            EE edge = target.addEdge(e1, e2);
-                            if (weightFunction != null)
-                                target.setEdgeWeight(edge, weightFunction.apply(e1, e2));
-                        }
-                    }
-                }
-            }
+            convertToLineGraph_2RefactorBicho(target, weightFunction);
 
         }
     }
+
+	private void convertToLineGraph_2RefactorBicho(final Graph<E, EE> target,
+			final BiFunction<E, E, Double> weightFunction) {
+		for (V v : graph.vertexSet()) {
+		    for (E e1 : graph.edgesOf(v)) {
+		        for (E e2 : graph.edgesOf(v)) {
+		            if (e1 != e2) {
+		                EE edge = target.addEdge(e1, e2);
+		                if (weightFunction != null)
+		                    target.setEdgeWeight(edge, weightFunction.apply(e1, e2));
+		            }
+		        }
+		    }
+		}
+	}
+
+	private void convertToLineGraph_RefactorBicho(final Graph<E, EE> target,
+			final BiFunction<E, E, Double> weightFunction) {
+		for (V vertex : graph.vertexSet()) {
+		    for (E e1 : graph.incomingEdgesOf(vertex)) {
+		        for (E e2 : graph.outgoingEdgesOf(vertex)) {
+		            EE edge = target.addEdge(e1, e2);
+		            if (weightFunction != null)
+		                target.setEdgeWeight(edge, weightFunction.apply(e1, e2));
+		        }
+		    }
+		}
+	}
 }
