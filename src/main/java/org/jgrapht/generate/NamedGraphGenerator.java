@@ -710,10 +710,7 @@ public class NamedGraphGenerator<V, E>
      *        the result will be a disconnected graph since generated elements will not be connected
      *        to existing elements
      */
-    public void generateGossetGraph(Graph<V, E> targetGraph)
-    {
-        vertexMap.clear();
-        int[][] edges = { { 0, 1 }, { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 }, { 0, 6 }, { 0, 7 },
+    private int[][] edges = { { 0, 1 }, { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 }, { 0, 6 }, { 0, 7 },
             { 0, 8 }, { 0, 9 }, { 0, 10 }, { 0, 11 }, { 0, 12 }, { 0, 13 }, { 0, 14 }, { 0, 15 },
             { 0, 16 }, { 0, 17 }, { 0, 18 }, { 0, 19 }, { 0, 20 }, { 0, 21 }, { 0, 28 }, { 0, 29 },
             { 0, 30 }, { 0, 31 }, { 0, 32 }, { 0, 33 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 },
@@ -817,6 +814,10 @@ public class NamedGraphGenerator<V, E>
             { 49, 50 }, { 49, 51 }, { 49, 52 }, { 49, 53 }, { 49, 54 }, { 49, 55 }, { 50, 51 },
             { 50, 52 }, { 50, 53 }, { 50, 54 }, { 50, 55 }, { 51, 52 }, { 51, 53 }, { 51, 54 },
             { 51, 55 }, { 52, 53 }, { 52, 54 }, { 52, 55 }, { 53, 54 }, { 53, 55 }, { 54, 55 } };
+
+    public void generateGossetGraph(Graph<V, E> targetGraph)
+    {
+        vertexMap.clear();
         for (int[] edge : edges)
             addEdge(targetGraph, edge[0], edge[1]);
     }
