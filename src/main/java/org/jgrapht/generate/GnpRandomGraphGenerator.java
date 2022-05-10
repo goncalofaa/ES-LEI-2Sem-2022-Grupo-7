@@ -131,56 +131,45 @@ public class GnpRandomGraphGenerator<V, E>
             throw new IllegalArgumentException("Provided graph does not support self-loops");
         }
 
-        // create vertices
-        int previousVertexSetSize = target.vertexSet().size();
-        List<V> vertices = new ArrayList<>(n);
-
-        for (int i = 0; i < n; i++) {
-            vertices.add(target.addVertex());
-        }
-
-        if (target.vertexSet().size() != previousVertexSetSize + n) {
-            throw new IllegalArgumentException(
-                "Vertex factory did not produce " + n + " distinct vertices.");
-        }
-
-        // check if graph is directed
-        boolean isDirected = target.getType().isDirected();
-
-        // create edges
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-
-                if (i == j) {
-                    if (!createLoops) {
-                        // no self-loops
-                        continue;
-                    }
-                }
-
-                V s = null;
-                V t = null;
-
-                // s->t
-                if (rng.nextDouble() < p) {
-                    s = vertices.get(i);
-                    t = vertices.get(j);
-                    target.addEdge(s, t);
-                }
-
-                if (isDirected) {
-                    // t->s
-                    if (rng.nextDouble() < p) {
-                        if (s == null) {
-                            s = vertices.get(i);
-                            t = vertices.get(j);
-                        }
-                        target.addEdge(t, s);
-                    }
-                }
-            }
-        }
+        target(target);
 
     }
+
+	private <V, E> void target(Graph<V, E> target) throws IllegalArgumentException {
+		int previousVertexSetSize = target.vertexSet().size();
+		List<V> vertices = new ArrayList<>(n);
+		for (int i = 0; i < n; i++) {
+			vertices.add(target.addVertex());
+		}
+		if (target.vertexSet().size() != previousVertexSetSize + n) {
+			throw new IllegalArgumentException("Vertex factory did not produce " + n + " distinct vertices.");
+		}
+		boolean isDirected = target.getType().isDirected();
+		for (int i = 0; i < n; i++) {
+			for (int j = i; j < n; j++) {
+				if (i == j) {
+					if (!createLoops) {
+						continue;
+					}
+				}
+				V s = null;
+				V t = null;
+				if (rng.nextDouble() < p) {
+					s = vertices.get(i);
+					t = vertices.get(j);
+					target.addEdge(s, t);
+				}
+				if (isDirected) {
+					if (rng.nextDouble() < p) {
+						if (s == null) {
+							s = vertices.get(i);
+							t = vertices.get(j);
+						}
+						target.addEdge(t, s);
+					}
+				}
+			}
+		}
+	}
 
 }
