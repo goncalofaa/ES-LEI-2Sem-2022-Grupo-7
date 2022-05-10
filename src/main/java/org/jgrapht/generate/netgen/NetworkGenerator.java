@@ -664,21 +664,25 @@ public class NetworkGenerator<V, E>
         // For every tail, generate the assigned number of arcs.
         for (int i = 0; i < tails.size(); i++) {
 
-            Node tail = tails.get(i);
-            int tailArcNum = arcNumDistribution.get(i);
-
-            ElementsSequenceGenerator<Node> headGenerator =
-                new ElementsSequenceGenerator<>(heads, rng);
-            while (tailArcNum > 0 && headGenerator.hasNext()) {
-                Node currentHead = headGenerator.next();
-                if (isValidArc(tail, currentHead)) {
-                    --tailArcNum;
-                    addArc(tail, currentHead);
-                }
-            }
-            assert tailArcNum == 0;
+            int tailArcNum = tailArcNum(tails, heads, arcNumDistribution, i);
+			assert tailArcNum == 0;
         }
     }
+
+	private int tailArcNum(List<NetworkGenerator<V, E>.Node> tails, List<NetworkGenerator<V, E>.Node> heads,
+			List<Integer> arcNumDistribution, int i) {
+		Node tail = tails.get(i);
+		int tailArcNum = arcNumDistribution.get(i);
+		ElementsSequenceGenerator<Node> headGenerator = new ElementsSequenceGenerator<>(heads, rng);
+		while (tailArcNum > 0 && headGenerator.hasNext()) {
+			Node currentHead = headGenerator.next();
+			if (isValidArc(tail, currentHead)) {
+				--tailArcNum;
+				addArc(tail, currentHead);
+			}
+		}
+		return tailArcNum;
+	}
 
     /**
      * Returns the number of arcs it is possible to generate from {@code node} to the {@code nodes}
