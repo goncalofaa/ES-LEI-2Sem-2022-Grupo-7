@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="Refactor LongMethod org.jgrapht.alg.transform.LineGraphConverter.java convertToLineGraph&#10;Tinha um if/else com 3 for dentro de cada e separei criando 2 métodos">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jgrapht/generate/GridGraphGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/generate/GridGraphGenerator.java" afterDir="false" />
+    <list default="true" id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="Refactor LongMethod org.jgrapht.generate.GridGraphGenerator.java generateGraph&#10;Tinha um método que a partir de uma lista entrava em 3 for.&#10;Dividi o metodo em 2 refactores que reduziu a complexidade">
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/generate/GridGraphGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/generate/GridGraphGenerator.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +70,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652190108608</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Refactor LongMethod org.jgrapht.generate.GridGraphGenerator.java generateGraph&#10;Tinha um método que a partir de uma lista entrava em 3 for.&#10;Dividi o metodo em 2 refactores que reduziu a complexidade">
+      <created>1652190761800</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1652190761800</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -87,6 +94,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactor LongMethod org.jgrapht.generate.DirectedScaleFreeGraphGenerator public void generateGraph(Graph&lt;V,E&gt;, Map&lt;java.lang.String,V&gt;)" />
     <MESSAGE value="Refactor LongMethod org.jgrapht.alg.transform.LineGraphConverter.java convertToLineGraph&#10;Tinha um if/else com 3 for dentro de cada e separei criando 2 métodos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor LongMethod org.jgrapht.alg.transform.LineGraphConverter.java convertToLineGraph&#10;Tinha um if/else com 3 for dentro de cada e separei criando 2 métodos" />
+    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.GridGraphGenerator.java generateGraph&#10;Tinha um método que a partir de uma lista entrava em 3 for.&#10;Dividi o metodo em 2 refactores que reduziu a complexidade" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor LongMethod org.jgrapht.generate.GridGraphGenerator.java generateGraph&#10;Tinha um método que a partir de uma lista entrava em 3 for.&#10;Dividi o metodo em 2 refactores que reduziu a complexidade" />
   </component>
 </project>
