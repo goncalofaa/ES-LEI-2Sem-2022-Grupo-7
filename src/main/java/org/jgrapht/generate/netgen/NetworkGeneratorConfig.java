@@ -616,4 +616,20 @@ public class NetworkGeneratorConfig
 	    }
 	}
 
+	/**
+	 * Generates an arc cost. This cost can be infinite.
+	 *
+	 * @param networkGenerator TODO
+	 * @return the generated arc cost.
+	 */
+	int getCost(NetworkGenerator networkGenerator)
+	{
+	    int percent = networkGenerator.generateBetween(1, 100);
+	    if (percent <= networkGenerator.config.getPercentWithInfCost()) {
+	        return Integer.MAX_VALUE;
+	    } else {
+	        return networkGenerator.generateBetween(networkGenerator.config.getMinCost(), networkGenerator.config.getMaxCost());
+	    }
+	}
+
 }

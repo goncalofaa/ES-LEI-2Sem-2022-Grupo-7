@@ -744,7 +744,7 @@ public class NetworkGenerator<V, E>
         assert isValidArc(tail, head);
         E arc = graph.addEdge(tail.graphVertex, head.graphVertex);
         capacityMap.put(arc, Math.max(config.getCapacity(this), chainSource.supply));
-        costMap.put(arc, getCost());
+        costMap.put(arc, config.getCost(this));
 
         registerSkeletonArc(tail, head);
         networkInfo.registerChainArc(arc);
@@ -765,7 +765,7 @@ public class NetworkGenerator<V, E>
         E edge = graph.addEdge(tail.graphVertex, head.graphVertex);
 
         capacityMap.put(edge, config.getCapacity(this));
-        costMap.put(edge, getCost());
+        costMap.put(edge, config.getCost(this));
     }
 
     /**
@@ -810,21 +810,6 @@ public class NetworkGenerator<V, E>
         default:
             // should never happen
             throw new RuntimeException();
-        }
-    }
-
-    /**
-     * Generates an arc cost. This cost can be infinite.
-     *
-     * @return the generated arc cost.
-     */
-    private int getCost()
-    {
-        int percent = generateBetween(1, 100);
-        if (percent <= config.getPercentWithInfCost()) {
-            return Integer.MAX_VALUE;
-        } else {
-            return generateBetween(config.getMinCost(), config.getMaxCost());
         }
     }
 
