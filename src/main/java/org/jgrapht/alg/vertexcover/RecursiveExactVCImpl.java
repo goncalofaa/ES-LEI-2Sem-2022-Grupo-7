@@ -179,8 +179,8 @@ public class RecursiveExactVCImpl<V, E>
                                                                        // vertices
                 if (visited.get(vertexIDDictionary.get(it.next())))
                     it.remove();
-            if (!neighbors.isEmpty()) {
-                indexNextVertex = index;
+            indexNextVertex = indexNextVertex(indexNextVertex, index, neighbors);
+			if (!neighbors.isEmpty()) {
                 break;
             }
         }
@@ -242,6 +242,13 @@ public class RecursiveExactVCImpl<V, E>
             return rightCover;
         }
     }
+
+	private int indexNextVertex(int indexNextVertex, int index, Set<V> neighbors) {
+		if (!neighbors.isEmpty()) {
+			indexNextVertex = index;
+		}
+		return indexNextVertex;
+	}
 
     /**
      * Returns the weight of a collection of vertices. In case of the unweighted vertex cover
