@@ -132,7 +132,7 @@ public class NetworkGenerator<V, E>
     /**
      * User-provided network configuration.
      */
-    private final NetworkGeneratorConfig config;
+    final NetworkGeneratorConfig config;
     /**
      * Random number generator used to create a network.
      */
@@ -743,7 +743,7 @@ public class NetworkGenerator<V, E>
     {
         assert isValidArc(tail, head);
         E arc = graph.addEdge(tail.graphVertex, head.graphVertex);
-        capacityMap.put(arc, Math.max(getCapacity(), chainSource.supply));
+        capacityMap.put(arc, Math.max(config.getCapacity(this), chainSource.supply));
         costMap.put(arc, getCost());
 
         registerSkeletonArc(tail, head);
@@ -764,7 +764,7 @@ public class NetworkGenerator<V, E>
         assert isValidArc(tail, head);
         E edge = graph.addEdge(tail.graphVertex, head.graphVertex);
 
-        capacityMap.put(edge, getCapacity());
+        capacityMap.put(edge, config.getCapacity(this));
         costMap.put(edge, getCost());
     }
 
@@ -814,21 +814,6 @@ public class NetworkGenerator<V, E>
     }
 
     /**
-     * Generates an arc capacity. This capacity can be infinite.
-     *
-     * @return the generated arc capacity.
-     */
-    private int getCapacity()
-    {
-        int percent = generateBetween(1, 100);
-        if (percent <= config.getPercentCapacitated()) {
-            return generateBetween(config.getMinCap(), config.getMaxCap());
-        } else {
-            return Integer.MAX_VALUE;
-        }
-    }
-
-    /**
      * Generates an arc cost. This cost can be infinite.
      *
      * @return the generated arc cost.
@@ -856,7 +841,7 @@ public class NetworkGenerator<V, E>
      * @param endInclusive upper bound
      * @return the generated number
      */
-    private int generateBetween(int startInclusive, int endInclusive)
+    int generateBetween(int startInclusive, int endInclusive)
     {
         return rng.nextInt(endInclusive - startInclusive + 1) + startInclusive;
     }
