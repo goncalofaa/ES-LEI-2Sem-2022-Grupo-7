@@ -1,4 +1,0 @@
-package org.jgrapht.perf.shortestpath.generated;
-public class DeltaSteppingShortestPathPerformance_WattsStogatzState_jmhType extends DeltaSteppingShortestPathPerformance_WattsStogatzState_jmhType_B3 {
-}
-

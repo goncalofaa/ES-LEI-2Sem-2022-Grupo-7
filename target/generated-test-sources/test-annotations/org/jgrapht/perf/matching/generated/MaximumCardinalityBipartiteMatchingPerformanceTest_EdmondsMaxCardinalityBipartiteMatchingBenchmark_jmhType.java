@@ -1,4 +1,0 @@
-package org.jgrapht.perf.matching.generated;
-public class MaximumCardinalityBipartiteMatchingPerformanceTest_EdmondsMaxCardinalityBipartiteMatchingBenchmark_jmhType extends MaximumCardinalityBipartiteMatchingPerformanceTest_EdmondsMaxCardinalityBipartiteMatchingBenchmark_jmhType_B3 {
-}
-

@@ -1,4 +1,0 @@
-package org.jgrapht.perf.graph.generated;
-public class DirectedAcyclicGraphPerformanceTest_BitSetDAGRandomGraphBenchmark_jmhType extends DirectedAcyclicGraphPerformanceTest_BitSetDAGRandomGraphBenchmark_jmhType_B3 {
-}
-

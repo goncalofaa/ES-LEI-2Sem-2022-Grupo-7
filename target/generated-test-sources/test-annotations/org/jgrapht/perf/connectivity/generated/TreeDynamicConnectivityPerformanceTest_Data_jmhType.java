@@ -1,4 +1,0 @@
-package org.jgrapht.perf.connectivity.generated;
-public class TreeDynamicConnectivityPerformanceTest_Data_jmhType extends TreeDynamicConnectivityPerformanceTest_Data_jmhType_B3 {
-}
-

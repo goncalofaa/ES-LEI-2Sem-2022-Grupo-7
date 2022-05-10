@@ -1,4 +1,0 @@
-package org.jgrapht.perf.matching.generated;
-public class PathGrowingWeightedMatchingPerformanceTest_GreedyWeightedMatchingRandomGraphBenchmark_jmhType extends PathGrowingWeightedMatchingPerformanceTest_GreedyWeightedMatchingRandomGraphBenchmark_jmhType_B3 {
-}
-

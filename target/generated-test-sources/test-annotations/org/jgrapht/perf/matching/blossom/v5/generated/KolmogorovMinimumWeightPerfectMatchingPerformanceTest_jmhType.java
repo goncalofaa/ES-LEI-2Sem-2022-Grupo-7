@@ -1,4 +1,0 @@
-package org.jgrapht.perf.matching.blossom.v5.generated;
-public class KolmogorovMinimumWeightPerfectMatchingPerformanceTest_jmhType extends KolmogorovMinimumWeightPerfectMatchingPerformanceTest_jmhType_B3 {
-}
-
