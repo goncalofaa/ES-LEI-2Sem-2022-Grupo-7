@@ -281,16 +281,12 @@ public class GraphWalk<V, E>
      */
     public GraphWalk<V, E> reverse(Function<GraphWalk<V, E>, Double> walkWeightCalculator)
     {
-        List<V> revVertexList = null;
-        List<E> revEdgeList = null;
-        double revWeight = 0;
-
-        if (vertexList != null) {
+        double revWeight = revWeight();
+		List<V> revVertexList = null;
+        List<E> revEdgeList = revEdgeList();
+		if (vertexList != null) {
             revVertexList = new ArrayList<>(this.vertexList);
             Collections.reverse(revVertexList);
-            if (graph.getType().isUndirected())
-                revWeight = this.weight;
-
             // Check validity of the path. If the path is invalid, then calculating its weight may
             // result in an undefined exception.
             // If an edgeList is provided, then this check can be postponed to the construction of
@@ -304,19 +300,14 @@ public class GraphWalk<V, E>
                         throw new InvalidGraphWalkException(
                             "this walk cannot be reversed. The graph does not contain a reverse arc for arc "
                                 + graph.getEdge(v, u));
-                    else
-                        revWeight += graph.getEdgeWeight(edge);
                 }
             }
         }
 
         if (edgeList != null) {
-            revEdgeList = new ArrayList<>(this.edgeList.size());
-
             if (graph.getType().isUndirected()) {
                 revEdgeList.addAll(this.edgeList);
                 Collections.reverse(revEdgeList);
-                revWeight = this.weight;
             } else {
                 ListIterator<E> listIterator = this.edgeList.listIterator(edgeList.size());
                 while (listIterator.hasPrevious()) {
@@ -329,7 +320,6 @@ public class GraphWalk<V, E>
                             "this walk cannot be reversed. The graph does not contain a reverse arc for arc "
                                 + e);
                     revEdgeList.add(revEdge);
-                    revWeight += graph.getEdgeWeight(revEdge);
                 }
             }
         }
@@ -342,6 +332,68 @@ public class GraphWalk<V, E>
             gw.weight = walkWeightCalculator.apply(gw);
         return gw;
     }
+
+	private List<E> revEdgeList() throws InvalidGraphWalkException {
+		List<E> revEdgeList = null;
+		if (edgeList != null) {
+			revEdgeList = new ArrayList<>(this.edgeList.size());
+			if (graph.getType().isUndirected()) {
+			} else {
+				ListIterator<E> listIterator = this.edgeList.listIterator(edgeList.size());
+				while (listIterator.hasPrevious()) {
+					E e = listIterator.previous();
+					V u = graph.getEdgeSource(e);
+					V v = graph.getEdgeTarget(e);
+					E revEdge = graph.getEdge(v, u);
+					if (revEdge == null)
+						throw new InvalidGraphWalkException(
+								"this walk cannot be reversed. The graph does not contain a reverse arc for arc " + e);
+				}
+			}
+		}
+		return revEdgeList;
+	}
+
+	private double revWeight() throws InvalidGraphWalkException {
+		List<V> revVertexList = null;
+		double revWeight = 0;
+		if (vertexList != null) {
+			revVertexList = new ArrayList<>(this.vertexList);
+			if (graph.getType().isUndirected())
+				revWeight = this.weight;
+			if (!graph.getType().isUndirected() && edgeList == null) {
+				for (int i = 0; i < revVertexList.size() - 1; i++) {
+					V u = revVertexList.get(i);
+					V v = revVertexList.get(i + 1);
+					E edge = graph.getEdge(u, v);
+					if (edge == null)
+						throw new InvalidGraphWalkException(
+								"this walk cannot be reversed. The graph does not contain a reverse arc for arc "
+										+ graph.getEdge(v, u));
+					else
+						revWeight += graph.getEdgeWeight(edge);
+				}
+			}
+		}
+		if (edgeList != null) {
+			if (graph.getType().isUndirected()) {
+				revWeight = this.weight;
+			} else {
+				ListIterator<E> listIterator = this.edgeList.listIterator(edgeList.size());
+				while (listIterator.hasPrevious()) {
+					E e = listIterator.previous();
+					V u = graph.getEdgeSource(e);
+					V v = graph.getEdgeTarget(e);
+					E revEdge = graph.getEdge(v, u);
+					if (revEdge == null)
+						throw new InvalidGraphWalkException(
+								"this walk cannot be reversed. The graph does not contain a reverse arc for arc " + e);
+					revWeight += graph.getEdgeWeight(revEdge);
+				}
+			}
+		}
+		return revWeight;
+	}
 
     /**
      * Concatenates the specified GraphWalk to the end of this GraphWalk. This action can only be
