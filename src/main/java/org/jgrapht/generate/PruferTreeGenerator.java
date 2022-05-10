@@ -182,6 +182,10 @@ public class PruferTreeGenerator<V, E>
             pruferSeq = inputPruferSeq;
         }
 
+        generateGraphAuxRefactor(degree, target, pruferSeq, vertexList);
+    }
+
+    private void generateGraphAuxRefactor(int[] degree, Graph<V, E> target, int[] pruferSeq, List<V> vertexList) {
         int index = -1;
         for (int k = 0; k < n; k++) {
             if (degree[k] == 1) {
