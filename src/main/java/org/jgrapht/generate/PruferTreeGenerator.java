@@ -163,6 +163,10 @@ public class PruferTreeGenerator<V, E>
             return;
         }
 
+        generateGraphAux1(target, resultMap, vertexList);
+    }
+
+    private void generateGraphAux1(Graph<V, E> target, Map<String, V> resultMap, List<V> vertexList) {
         // degree stores the remaining degree (plus one) for each node. The
         // degree of a node in the decoded tree is one more than the number
         // of times it appears in the code.
@@ -181,11 +185,10 @@ public class PruferTreeGenerator<V, E>
         } else {
             pruferSeq = inputPruferSeq;
         }
-
-        generateGraphAuxRefactor(degree, target, pruferSeq, vertexList);
+        generateGraphAux2(target, resultMap, degree, pruferSeq, vertexList);
     }
 
-    private void generateGraphAuxRefactor(int[] degree, Graph<V, E> target, int[] pruferSeq, List<V> vertexList) {
+    private void generateGraphAux2(Graph<V, E> target, Map<String, V> resultMap, int[] degree, int[] pruferSeq, List<V> vertexList) {
         int index = -1;
         for (int k = 0; k < n; k++) {
             if (degree[k] == 1) {
@@ -193,19 +196,19 @@ public class PruferTreeGenerator<V, E>
                 break;
             }
         }
-
         assert index != -1;
         int x = index;
-
         // set of nodes without a parent
         Set<V> orphans = new HashSet<>(target.vertexSet());
+        generateGraphAux3(target, resultMap, degree, pruferSeq, orphans, vertexList, index, x);
+    }
 
+    private void generateGraphAux3(Graph<V, E> target, Map<String, V> resultMap, int[] degree, int[] pruferSeq, Set<V> orphans, List<V> vertexList, int index, int x) {
         for (int i = 0; i < n - 2; i++) {
             int y = pruferSeq[i];
             orphans.remove(vertexList.get(x));
             target.addEdge(vertexList.get(x), vertexList.get(y));
             --degree[y];
-
             if (y < index && degree[y] == 1) {
                 x = y;
             } else {
@@ -224,4 +227,6 @@ public class PruferTreeGenerator<V, E>
         V v = iterator.next();
         target.addEdge(u, v);
     }
+
+
 }
