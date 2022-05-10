@@ -58,7 +58,7 @@ public class DefaultUndirectedGraph<V, E>
     {
         super(
             vertexSupplier, edgeSupplier,
-            new DefaultGraphType.Builder()
+            new Builder()
                 .undirected().allowMultipleEdges(false).allowSelfLoops(true).weighted(weighted)
                 .build());
     }

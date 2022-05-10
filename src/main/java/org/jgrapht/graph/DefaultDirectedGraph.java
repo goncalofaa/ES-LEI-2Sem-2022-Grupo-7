@@ -59,7 +59,7 @@ public class DefaultDirectedGraph<V, E>
     {
         super(
             vertexSupplier, edgeSupplier,
-            new DefaultGraphType.Builder()
+            new Builder()
                 .directed().allowMultipleEdges(false).allowSelfLoops(true).weighted(weighted)
                 .build());
     }

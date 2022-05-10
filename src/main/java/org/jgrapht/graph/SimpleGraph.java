@@ -60,7 +60,7 @@ public class SimpleGraph<V, E>
     {
         super(
             vertexSupplier, edgeSupplier,
-            new DefaultGraphType.Builder()
+            new Builder()
                 .undirected().allowMultipleEdges(false).allowSelfLoops(false).weighted(weighted)
                 .build());
     }

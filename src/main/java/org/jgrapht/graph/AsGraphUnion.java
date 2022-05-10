@@ -76,7 +76,7 @@ public class AsGraphUnion<V, E>
         this.operator = Objects.requireNonNull(operator, "Weight combiner cannot be null");
 
         // compute result type
-        DefaultGraphType.Builder builder = new DefaultGraphType.Builder();
+        Builder builder = new Builder();
         if (type1.isDirected() && type2.isDirected()) {
             builder = builder.directed();
         } else if (type1.isUndirected() && type2.isUndirected()) {

@@ -58,7 +58,7 @@ public class Pseudograph<V, E>
     {
         super(
             vertexSupplier, edgeSupplier,
-            new DefaultGraphType.Builder()
+            new Builder()
                 .undirected().allowMultipleEdges(true).allowSelfLoops(true).weighted(weighted)
                 .build());
     }

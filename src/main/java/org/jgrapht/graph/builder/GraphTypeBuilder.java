@@ -260,7 +260,7 @@ public final class GraphTypeBuilder<V, E>
      */
     public GraphType buildType()
     {
-        DefaultGraphType.Builder typeBuilder = new DefaultGraphType.Builder();
+        Builder typeBuilder = new Builder();
         if (directed && undirected) {
             typeBuilder = typeBuilder.mixed();
         } else if (directed) {

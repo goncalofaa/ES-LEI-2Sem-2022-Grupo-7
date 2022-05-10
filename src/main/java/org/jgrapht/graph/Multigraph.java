@@ -59,7 +59,7 @@ public class Multigraph<V, E>
     {
         super(
             vertexSupplier, edgeSupplier,
-            new DefaultGraphType.Builder()
+            new Builder()
                 .undirected().allowMultipleEdges(true).allowSelfLoops(false).weighted(weighted)
                 .build());
     }
