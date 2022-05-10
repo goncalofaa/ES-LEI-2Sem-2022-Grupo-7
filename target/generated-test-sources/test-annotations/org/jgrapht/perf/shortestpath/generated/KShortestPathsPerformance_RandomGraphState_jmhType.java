@@ -1,4 +1,0 @@
-package org.jgrapht.perf.shortestpath.generated;
-public class KShortestPathsPerformance_RandomGraphState_jmhType extends KShortestPathsPerformance_RandomGraphState_jmhType_B3 {
-}
-

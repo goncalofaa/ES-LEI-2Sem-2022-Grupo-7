@@ -1,4 +1,0 @@
-package org.jgrapht.perf.lca.generated;
-public class LowestCommonAncestorAlgorithmPerformanceTest_TarjanLCARandomTreeBenchmark_jmhType extends LowestCommonAncestorAlgorithmPerformanceTest_TarjanLCARandomTreeBenchmark_jmhType_B3 {
-}
-

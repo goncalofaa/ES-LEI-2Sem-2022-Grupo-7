@@ -1,4 +1,0 @@
-package org.jgrapht.perf.flow.generated;
-public class MaximumFlowAlgorithmPerformanceTest_PushRelabelMaximumFlowRandomGraphBenchmark_jmhType extends MaximumFlowAlgorithmPerformanceTest_PushRelabelMaximumFlowRandomGraphBenchmark_jmhType_B3 {
-}
-
