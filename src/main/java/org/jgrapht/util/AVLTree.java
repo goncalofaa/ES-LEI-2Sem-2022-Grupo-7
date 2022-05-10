@@ -173,22 +173,29 @@ public class AVLTree<T>
         if (left == null) {
             left = node;
         } else {
-            // insert node as a left subtree max
-            TreeNode<T> t = left;
-            while (t.right != null) {
-                t = t.right;
-            }
-            t.setRightChild(node);
-
-            while (t != left) {
-                TreeNode<T> p = t.parent;
-                p.substituteChild(t, balanceNode(t));
-                t = p;
-            }
-            left = balanceNode(left);
+        	refactorsplitAfter( node, left, right);
 
         }
         return split(left, right, parent, nextMove);
+    }
+    
+    public void refactorsplitAfter(TreeNode<T> node,TreeNode<T> left,TreeNode<T> right)
+    {
+        // insert node as a left subtree max
+        TreeNode<T> t = left;
+        while (t.right != null) {
+            t = t.right;
+        }
+        t.setRightChild(node);
+
+        while (t != left) {
+            TreeNode<T> p = t.parent;
+            p.substituteChild(t, balanceNode(t));
+            t = p;
+        }
+        left = balanceNode(left);
+
+    
     }
 
     /**

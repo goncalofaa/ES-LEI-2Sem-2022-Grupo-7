@@ -123,6 +123,35 @@ public class AliasMethodSampler
          */
         this.prob = new double[n];
         this.alias = new int[n];
+        
+        refactorAliasMethodSampler2( s,   l, small,  large,  n, p,  threshold);
+
+
+        refactorAliasMethodSampler( s,   l, small,  large);
+
+    }
+    
+   
+    
+    
+    
+    
+    public void refactorAliasMethodSampler(int s,  int l,int[] small, int[] large)
+    {
+        while (s > 0) {
+            prob[small[--s]] = 1d;
+        }
+
+        while (l > 0) {
+            prob[large[--l]] = 1d;
+        }
+    	
+    }
+    
+    
+    
+    public void refactorAliasMethodSampler2(int s,  int l,int[] small, int[] large, int n,double[] p, double threshold)
+    {
         while (s != 0 && l != 0) {
             int j = small[--s];
             int k = large[--l];
@@ -136,15 +165,10 @@ public class AliasMethodSampler
                 small[s++] = k;
             }
         }
-
-        while (s > 0) {
-            prob[small[--s]] = 1d;
-        }
-
-        while (l > 0) {
-            prob[large[--l]] = 1d;
-        }
+    	
     }
+    
+    
 
     /**
      * Sample a value from the distribution.

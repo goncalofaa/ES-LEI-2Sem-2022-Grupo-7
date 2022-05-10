@@ -180,10 +180,7 @@ public class GnmRandomBipartiteGraphGenerator<V, E>
             // check whether to add the edge
             if (!target.containsEdge(s, t)) {
                 try {
-                    E resultEdge = target.addEdge(s, t);
-                    if (resultEdge != null) {
-                        edgesCounter++;
-                    }
+                    edgesCounter = edgesCounter(target, edgesCounter, s, t);
                 } catch (IllegalArgumentException e) {
                     // do nothing, just ignore the edge
                 }
@@ -191,6 +188,14 @@ public class GnmRandomBipartiteGraphGenerator<V, E>
         }
 
     }
+
+	private <V, E> int edgesCounter(Graph<V, E> target, int edgesCounter, V s, V t) {
+		E resultEdge = target.addEdge(s, t);
+		if (resultEdge != null) {
+			edgesCounter++;
+		}
+		return edgesCounter;
+	}
 
     /**
      * Returns the first partition of vertices in the bipartite graph. This partition is guaranteed
