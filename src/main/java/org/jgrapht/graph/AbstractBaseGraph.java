@@ -228,16 +228,7 @@ public abstract class AbstractBaseGraph<V, E>
     @Override
     public E addEdge(V sourceVertex, V targetVertex)
     {
-        assertVertexExist(sourceVertex);
-        assertVertexExist(targetVertex);
-
-        if (!type.isAllowingSelfLoops() && sourceVertex.equals(targetVertex)) {
-            throw new IllegalArgumentException(LOOPS_NOT_ALLOWED);
-        }
-
-        if (edgeSupplier == null) {
-            throw new UnsupportedOperationException(THE_GRAPH_CONTAINS_NO_EDGE_SUPPLIER);
-        }
+        verifyEquals(sourceVertex, targetVertex);
 
         if (!type.isAllowingMultipleEdges()) {
             E e = specifics
@@ -265,6 +256,19 @@ public abstract class AbstractBaseGraph<V, E>
         }
         return null;
     }
+
+	private void verifyEquals(V sourceVertex, V targetVertex) {
+		assertVertexExist(sourceVertex);
+        assertVertexExist(targetVertex);
+
+        if (!type.isAllowingSelfLoops() && sourceVertex.equals(targetVertex)) {
+            throw new IllegalArgumentException(LOOPS_NOT_ALLOWED);
+        }
+
+        if (edgeSupplier == null) {
+            throw new UnsupportedOperationException(THE_GRAPH_CONTAINS_NO_EDGE_SUPPLIER);
+        }
+	}
 
     /**
      * {@inheritDoc}
