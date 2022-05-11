@@ -138,7 +138,12 @@ public class GnpRandomGraphGenerator<V, E>
         boolean isDirected = target.getType().isDirected();
 
         // create edges
-        for (int i = 0; i < n; i++) {
+        createEdges(target, vertices, isDirected);
+
+    }
+
+	private void createEdges(Graph<V, E> target, List<V> vertices, boolean isDirected) {
+		for (int i = 0; i < n; i++) {
             for (int j = i; j < n; j++) {
 
                 if (i == j) {
@@ -170,8 +175,7 @@ public class GnpRandomGraphGenerator<V, E>
                 }
             }
         }
-
-    }
+	}
 
 	private List<V> createVertices(Graph<V, E> target) {
 		int previousVertexSetSize = target.vertexSet().size();
