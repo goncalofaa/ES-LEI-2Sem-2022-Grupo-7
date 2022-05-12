@@ -57,7 +57,7 @@ public class SimpleDirectedGraph<V, E>
     {
         super(
             vertexSupplier, edgeSupplier,
-            new DefaultGraphType.Builder()
+            new Builder()
                 .directed().allowMultipleEdges(false).allowSelfLoops(false).weighted(weighted)
                 .build());
     }

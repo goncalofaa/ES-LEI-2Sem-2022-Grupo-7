@@ -21,9 +21,17 @@ import org.jgrapht.*;
 import org.jgrapht.alg.connectivity.*;
 import org.jgrapht.generate.*;
 import org.jgrapht.graph.*;
+import org.jgrapht.perf.clique.MaximalCliqueEnumerationPerformanceTest.BronKerboschRandomGraphBenchmark;
+import org.jgrapht.perf.clique.MaximalCliqueEnumerationPerformanceTest.DegeneracyBronKerboschRandomGraphBenchmark;
+import org.jgrapht.perf.clique.MaximalCliqueEnumerationPerformanceTest.PivotBronKerboschRandomGraphBenchmark;
 import org.jgrapht.traverse.*;
 import org.jgrapht.util.*;
+import org.junit.Test;
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.RunnerException;
+import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -139,4 +147,5 @@ public class TreeDynamicConnectivityPerformanceTest
             return res;
         }
     }
+    
 }

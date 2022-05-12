@@ -89,7 +89,11 @@ public class CompleteGraphGenerator<V, E>
         /*
          * Add edges
          */
-        List<V> nodes = new ArrayList<>(target.vertexSet());
+        addEdges(target, isDirected);
+    }
+
+	private void addEdges(Graph<V, E> target, boolean isDirected) {
+		List<V> nodes = new ArrayList<>(target.vertexSet());
         for (int i = 0; i < nodes.size(); i++) {
             for (int j = i + 1; j < nodes.size(); j++) {
                 V v = nodes.get(i);
@@ -100,5 +104,5 @@ public class CompleteGraphGenerator<V, E>
                 }
             }
         }
-    }
+	}
 }

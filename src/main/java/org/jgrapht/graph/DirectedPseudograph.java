@@ -60,7 +60,7 @@ public class DirectedPseudograph<V, E>
     {
         super(
             vertexSupplier, edgeSupplier,
-            new DefaultGraphType.Builder()
+            new Builder()
                 .directed().allowMultipleEdges(true).allowSelfLoops(true).weighted(weighted)
                 .build());
     }

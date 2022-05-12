@@ -162,7 +162,7 @@ public class DirectedAcyclicGraph<V, E>
     {
         super(
             vertexSupplier, edgeSupplier,
-            new DefaultGraphType.Builder()
+            new Builder()
                 .directed().allowMultipleEdges(allowMultipleEdges).allowSelfLoops(false)
                 .weighted(weighted).allowCycles(false).build());
         this.visitedStrategyFactory =

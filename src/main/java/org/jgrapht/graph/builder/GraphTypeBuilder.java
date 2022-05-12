@@ -260,7 +260,7 @@ public final class GraphTypeBuilder<V, E>
      */
     public GraphType buildType()
     {
-        DefaultGraphType.Builder typeBuilder = new DefaultGraphType.Builder();
+        Builder typeBuilder = new Builder();
         if (directed && undirected) {
             typeBuilder = typeBuilder.mixed();
         } else if (directed) {
@@ -314,40 +314,51 @@ public final class GraphTypeBuilder<V, E>
                 }
 
             } else {
-                if (weighted) {
-                    return new SimpleDirectedWeightedGraph<>(vertexSupplier, edgeSupplier);
-                } else {
-                    return new SimpleDirectedGraph<>(vertexSupplier, edgeSupplier, false);
-                }
+               return graphAux1();
             }
-        } else {
-            if (allowingSelfLoops && allowingMultipleEdges) {
-                if (weighted) {
-                    return new WeightedPseudograph<>(vertexSupplier, edgeSupplier);
-                } else {
-                    return new Pseudograph<>(vertexSupplier, edgeSupplier, false);
-                }
-            } else if (allowingMultipleEdges) {
-                if (weighted) {
-                    return new WeightedMultigraph<>(vertexSupplier, edgeSupplier);
-                } else {
-                    return new Multigraph<>(vertexSupplier, edgeSupplier, false);
-                }
-            } else if (allowingSelfLoops) {
-                if (weighted) {
-                    return new DefaultUndirectedWeightedGraph<>(vertexSupplier, edgeSupplier);
-                } else {
-                    return new DefaultUndirectedGraph<>(vertexSupplier, edgeSupplier, false);
-                }
 
-            } else {
-                if (weighted) {
-                    return new SimpleWeightedGraph<>(vertexSupplier, edgeSupplier);
-                } else {
-                    return new SimpleGraph<>(vertexSupplier, edgeSupplier, false);
-                }
-            }
+        } else { return graphAux2();}
+    }
+
+    private Graph<V, E> graphAux1() {
+        if (weighted) {
+            return new SimpleDirectedWeightedGraph<>(vertexSupplier, edgeSupplier);
+        } else {
+            return new SimpleDirectedGraph<>(vertexSupplier, edgeSupplier, false);
         }
     }
 
+
+    private Graph<V, E> graphAux2() {
+        if (allowingSelfLoops && allowingMultipleEdges) {
+            if (weighted) {
+                return new WeightedPseudograph<>(vertexSupplier, edgeSupplier);
+            } else {
+                return new Pseudograph<>(vertexSupplier, edgeSupplier, false);
+            }
+        } else if (allowingMultipleEdges) {
+            if (weighted) {
+                return new WeightedMultigraph<>(vertexSupplier, edgeSupplier);
+            } else {
+                return new Multigraph<>(vertexSupplier, edgeSupplier, false);
+            }
+        } else if (allowingSelfLoops) {
+            if (weighted) {
+                return new DefaultUndirectedWeightedGraph<>(vertexSupplier, edgeSupplier);
+            } else {
+                return new DefaultUndirectedGraph<>(vertexSupplier, edgeSupplier, false);
+            }
+
+        } else {
+            return  graphAux3();
+        }
+    }
+
+    private Graph<V, E> graphAux3(){
+        if (weighted) {
+            return new SimpleWeightedGraph<>(vertexSupplier, edgeSupplier);
+        } else {
+            return new SimpleGraph<>(vertexSupplier, edgeSupplier, false);
+        }
+    }
 }

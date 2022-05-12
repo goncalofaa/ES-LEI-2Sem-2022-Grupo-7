@@ -174,63 +174,61 @@ public class GnmRandomGraphGenerator<V, E>
                     + n);
         }
 
-        // create vertices
-        List<V> vertices = new ArrayList<>(n);
-        int previousVertexSetSize = target.vertexSet().size();
-        for (int i = 0; i < n; i++) {
-            vertices.add(target.addVertex());
-        }
-
-        if (target.vertexSet().size() != previousVertexSetSize + n) {
-            throw new IllegalArgumentException(
-                "Vertex factory did not produce " + n + " distinct vertices.");
-        }
-
-        // create edges
-        int edgesCounter = 0;
-        while (edgesCounter < m) {
-            int sIndex = rng.nextInt(n);
-            int tIndex = rng.nextInt(n);
-
-            // lazy to avoid lookups
-            V s = null;
-            V t = null;
-
-            // check whether to add the edge
-            boolean addEdge = false;
-            if (sIndex == tIndex) { // self-loop
-                if (loops) {
-                    addEdge = true;
-                }
-            } else {
-                if (multipleEdges) {
-                    addEdge = true;
-                } else {
-                    s = vertices.get(sIndex);
-                    t = vertices.get(tIndex);
-                    if (!target.containsEdge(s, t)) {
-                        addEdge = true;
-                    }
-                }
-            }
-
-            // if yes, add it
-            if (addEdge) {
-                try {
-                    if (s == null) {
-                        s = vertices.get(sIndex);
-                        t = vertices.get(tIndex);
-                    }
-                    E resultEdge = target.addEdge(s, t);
-                    if (resultEdge != null) {
-                        edgesCounter++;
-                    }
-                } catch (IllegalArgumentException e) {
-                    // do nothing, just ignore the edge
-                }
-            }
-        }
+        generateGraphAux(target);
     }
+
+	private <V, E> void generateGraphAux(Graph<V, E> target) throws IllegalArgumentException {
+		List<V> vertices = new ArrayList<>(n);
+		int previousVertexSetSize = target.vertexSet().size();
+		int edgesCounter = edgesCounter(target, vertices, previousVertexSetSize);
+	}
+
+	private <V, E> int edgesCounter(Graph<V, E> target, List<V> vertices, int previousVertexSetSize)
+			throws IllegalArgumentException {
+		for (int i = 0; i < n; i++) {
+			vertices.add(target.addVertex());
+		}
+		if (target.vertexSet().size() != previousVertexSetSize + n) {
+			throw new IllegalArgumentException("Vertex factory did not produce " + n + " distinct vertices.");
+		}
+		int edgesCounter = 0;
+		while (edgesCounter < m) {
+			int sIndex = rng.nextInt(n);
+			int tIndex = rng.nextInt(n);
+			V s = null;
+			V t = null;
+			boolean addEdge = false;
+			if (sIndex == tIndex) {
+				if (loops) {
+					addEdge = true;
+				}
+			} else {
+				if (multipleEdges) {
+					addEdge = true;
+				} else {
+					s = vertices.get(sIndex);
+					t = vertices.get(tIndex);
+					if (!target.containsEdge(s, t)) {
+						addEdge = true;
+					}
+				}
+			}
+			if (addEdge) {
+				try {
+					if (s == null) {
+						s = vertices.get(sIndex);
+						t = vertices.get(tIndex);
+					}
+					E resultEdge = target.addEdge(s, t);
+					if (resultEdge != null) {
+						edgesCounter++;
+					}
+				} catch (IllegalArgumentException e) {
+				}
+			}
+		}
+		return edgesCounter;
+	}
 
     /**
      * Return the number of allowed edges based on the graph type.

@@ -57,7 +57,7 @@ public class DirectedMultigraph<V, E>
     {
         super(
             vertexSupplier, edgeSupplier,
-            new DefaultGraphType.Builder()
+            new Builder()
                 .directed().allowMultipleEdges(true).allowSelfLoops(false).weighted(weighted)
                 .build());
     }

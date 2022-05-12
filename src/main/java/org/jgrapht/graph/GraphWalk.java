@@ -234,11 +234,15 @@ public class GraphWalk<V, E>
         // If this path is expressed as a vertex list, we may get away by comparing the other path's
         // vertex list
         // This only works if its vertexList identifies a unique path in the graph
-        if (this.edgeList == null && !other.getGraph().getType().isAllowingMultipleEdges())
+        return compareVertexList(other);
+    }
+
+	private boolean compareVertexList(GraphWalk<V, E> other) {
+		if (this.edgeList == null && !other.getGraph().getType().isAllowingMultipleEdges())
             return this.vertexList.equals(other.getVertexList());
         else // Unlucky, we need to compare the edge lists,
             return this.getEdgeList().equals(other.getEdgeList());
-    }
+	}
 
     @Override
     public int hashCode()
