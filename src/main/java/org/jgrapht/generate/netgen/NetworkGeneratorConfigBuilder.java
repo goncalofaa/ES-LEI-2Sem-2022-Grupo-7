@@ -29,7 +29,8 @@ package org.jgrapht.generate.netgen;
  */
 public class NetworkGeneratorConfigBuilder
 {
-    int nodeNum = 0;
+    private NetworkGeneratorConfigBuilderProduct networkGeneratorConfigBuilderProduct = new NetworkGeneratorConfigBuilderProduct();
+	int nodeNum = 0;
     int arcNum = 0;
     int sourceNum = 0;
     int sinkNum = 0;
@@ -196,8 +197,7 @@ public class NetworkGeneratorConfigBuilder
     public NetworkGeneratorConfigBuilder setMaximumFlowProblemParams(
         int nodeNum, int arcNum, int supply)
     {
-        setMaximumFlowProblemParams(nodeNum, arcNum, supply, 1, 1);
-        return this;
+        return networkGeneratorConfigBuilderProduct.setMaximumFlowProblemParams(nodeNum, arcNum, supply, this);
     }
 
     /**
@@ -214,8 +214,8 @@ public class NetworkGeneratorConfigBuilder
     public NetworkGeneratorConfigBuilder setMaximumFlowProblemParams(
         int nodeNum, int arcNum, int supply, int minCap, int maxCap)
     {
-        setMaximumFlowProblemParams(nodeNum, arcNum, supply, minCap, maxCap, 1, 1);
-        return this;
+        return networkGeneratorConfigBuilderProduct.setMaximumFlowProblemParams(nodeNum, arcNum, supply, minCap, maxCap,
+				this);
     }
 
     /**
@@ -234,9 +234,8 @@ public class NetworkGeneratorConfigBuilder
     public NetworkGeneratorConfigBuilder setMaximumFlowProblemParams(
         int nodeNum, int arcNum, int supply, int minCap, int maxCap, int sourceNum, int sinkNum)
     {
-        setMaximumFlowProblemParams(
-            nodeNum, arcNum, supply, minCap, maxCap, sourceNum, sinkNum, 100);
-        return this;
+        return networkGeneratorConfigBuilderProduct.setMaximumFlowProblemParams(nodeNum, arcNum, supply, minCap, maxCap,
+				sourceNum, sinkNum, this);
     }
 
     /**
@@ -256,10 +255,8 @@ public class NetworkGeneratorConfigBuilder
         int nodeNum, int arcNum, int supply, int minCap, int maxCap, int sourceNum, int sinkNum,
         int percentCapacitated)
     {
-        setParams(
-            nodeNum, arcNum, sourceNum, sinkNum, 0, 0, supply, minCap, maxCap, 1, 1,
-            percentCapacitated, 0);
-        return this;
+        return networkGeneratorConfigBuilderProduct.setMaximumFlowProblemParams(nodeNum, arcNum, supply, minCap, maxCap,
+				sourceNum, sinkNum, percentCapacitated, this);
     }
 
     /**
