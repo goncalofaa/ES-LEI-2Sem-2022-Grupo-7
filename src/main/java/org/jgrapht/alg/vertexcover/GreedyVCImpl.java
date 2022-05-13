@@ -90,9 +90,8 @@ public class GreedyVCImpl<V, E>
     public VertexCoverAlgorithm.VertexCover<V> getVertexCover()
     {
         Set<V> cover = new LinkedHashSet<>();
-        double weight = 0;
-
-        // Create working graph: for every vertex, create a RatioVertex which maintains its own list
+        double weight = weight();
+		// Create working graph: for every vertex, create a RatioVertex which maintains its own list
         // of neighbors
         Map<V, RatioVertex<V>> vertexEncapsulationMap = new HashMap<>();
         graph
@@ -147,12 +146,21 @@ public class GreedyVCImpl<V, E>
 
             // Update cover
             cover.add(vx.v);
-            weight += vertexWeightMap.get(vx.v);
             assert (workingGraph
                 .parallelStream().noneMatch(
                     ux -> ux.ID == vx.ID)) : "vx should no longer exist in the working graph";
         }
         return new VertexCoverAlgorithm.VertexCoverImpl<>(cover, weight);
     }
+
+	private double weight() {
+		double weight = 0;
+		TreeSet<RatioVertex<V>> workingGraph = new TreeSet<>();
+		while (!workingGraph.isEmpty()) {
+			RatioVertex<V> vx = workingGraph.pollFirst();
+			weight += vertexWeightMap.get(vx.v);
+		}
+		return weight;
+	}
 
 }
