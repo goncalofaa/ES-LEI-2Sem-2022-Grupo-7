@@ -22,7 +22,6 @@ import org.jgrapht.util.*;
 import java.util.*;
 import java.util.stream.*;
 
-import static org.jgrapht.util.AVLTree.TreeNode;
 import static org.jgrapht.util.DoublyLinkedList.ListNode;
 
 /**

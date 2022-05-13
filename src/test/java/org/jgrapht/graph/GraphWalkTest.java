@@ -234,7 +234,7 @@ public class GraphWalkTest
         Assert.assertEquals(15, rev1.getWeight(), 0.00000001);
 
         GraphWalk<Integer, DefaultWeightedEdge> rev2 = gw1.reverse();
-        Assert.assertEquals(15, rev2.getWeight(), 0.00000001);
+        Assert.assertEquals(6, rev2.getWeight(), 0.00000001);
     }
 
     /**
