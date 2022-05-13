@@ -71,7 +71,29 @@ public class GridGraphGenerator<V, E>
     @Override
     public void generateGraph(Graph<V, E> target, Map<String, V> resultMap)
     {
-        List<V> vertices = new ArrayList<>(rows * cols);
+        List<V> vertices = generateGraph_RefactorBicho(target, resultMap);
+
+        // Iterating twice over the key set, for undirected graph edges are
+        // added from upper vertices to lower, and from left to right. The
+        // second addEdge call will return nothing; it will not add a the edge
+        // at the opposite direction. For directed graph, edges in opposite
+        // direction are also added.
+        generateGraph_2RefactorBicho(target, vertices);
+    }
+
+	private void generateGraph_2RefactorBicho(Graph<V, E> target, List<V> vertices) {
+		for (int i = 1; i <= vertices.size(); i++) {
+            for (int j = 1; j <= vertices.size(); j++) {
+                if ((((i % cols) > 0) && ((i + 1) == j)) || ((i + cols) == j)) {
+                    target.addEdge(vertices.get(i - 1), vertices.get(j - 1));
+                    target.addEdge(vertices.get(j - 1), vertices.get(i - 1));
+                }
+            }
+        }
+	}
+
+	private List<V> generateGraph_RefactorBicho(Graph<V, E> target, Map<String, V> resultMap) {
+		List<V> vertices = new ArrayList<>(rows * cols);
 
         // Adding all vertices to the set
         int cornerCtr = 0;
@@ -85,19 +107,6 @@ public class GridGraphGenerator<V, E>
                 resultMap.put(CORNER_VERTEX + ' ' + ++cornerCtr, vertex);
             }
         }
-
-        // Iterating twice over the key set, for undirected graph edges are
-        // added from upper vertices to lower, and from left to right. The
-        // second addEdge call will return nothing; it will not add a the edge
-        // at the opposite direction. For directed graph, edges in opposite
-        // direction are also added.
-        for (int i = 1; i <= vertices.size(); i++) {
-            for (int j = 1; j <= vertices.size(); j++) {
-                if ((((i % cols) > 0) && ((i + 1) == j)) || ((i + cols) == j)) {
-                    target.addEdge(vertices.get(i - 1), vertices.get(j - 1));
-                    target.addEdge(vertices.get(j - 1), vertices.get(i - 1));
-                }
-            }
-        }
-    }
+		return vertices;
+	}
 }
