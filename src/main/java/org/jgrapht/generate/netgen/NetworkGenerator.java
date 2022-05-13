@@ -132,7 +132,7 @@ public class NetworkGenerator<V, E>
     /**
      * User-provided network configuration.
      */
-    private final NetworkGeneratorConfig config;
+    final NetworkGeneratorConfig config;
     /**
      * Random number generator used to create a network.
      */
@@ -664,21 +664,25 @@ public class NetworkGenerator<V, E>
         // For every tail, generate the assigned number of arcs.
         for (int i = 0; i < tails.size(); i++) {
 
-            Node tail = tails.get(i);
-            int tailArcNum = arcNumDistribution.get(i);
-
-            ElementsSequenceGenerator<Node> headGenerator =
-                new ElementsSequenceGenerator<>(heads, rng);
-            while (tailArcNum > 0 && headGenerator.hasNext()) {
-                Node currentHead = headGenerator.next();
-                if (isValidArc(tail, currentHead)) {
-                    --tailArcNum;
-                    addArc(tail, currentHead);
-                }
-            }
-            assert tailArcNum == 0;
+            int tailArcNum = tailArcNum(tails, heads, arcNumDistribution, i);
+			assert tailArcNum == 0;
         }
     }
+
+	private int tailArcNum(List<NetworkGenerator<V, E>.Node> tails, List<NetworkGenerator<V, E>.Node> heads,
+			List<Integer> arcNumDistribution, int i) {
+		Node tail = tails.get(i);
+		int tailArcNum = arcNumDistribution.get(i);
+		ElementsSequenceGenerator<Node> headGenerator = new ElementsSequenceGenerator<>(heads, rng);
+		while (tailArcNum > 0 && headGenerator.hasNext()) {
+			Node currentHead = headGenerator.next();
+			if (isValidArc(tail, currentHead)) {
+				--tailArcNum;
+				addArc(tail, currentHead);
+			}
+		}
+		return tailArcNum;
+	}
 
     /**
      * Returns the number of arcs it is possible to generate from {@code node} to the {@code nodes}
@@ -739,8 +743,8 @@ public class NetworkGenerator<V, E>
     {
         assert isValidArc(tail, head);
         E arc = graph.addEdge(tail.graphVertex, head.graphVertex);
-        capacityMap.put(arc, Math.max(getCapacity(), chainSource.supply));
-        costMap.put(arc, getCost());
+        capacityMap.put(arc, Math.max(config.getCapacity(this), chainSource.supply));
+        costMap.put(arc, config.getCost(this));
 
         registerSkeletonArc(tail, head);
         networkInfo.registerChainArc(arc);
@@ -760,8 +764,8 @@ public class NetworkGenerator<V, E>
         assert isValidArc(tail, head);
         E edge = graph.addEdge(tail.graphVertex, head.graphVertex);
 
-        capacityMap.put(edge, getCapacity());
-        costMap.put(edge, getCost());
+        capacityMap.put(edge, config.getCapacity(this));
+        costMap.put(edge, config.getCost(this));
     }
 
     /**
@@ -809,36 +813,6 @@ public class NetworkGenerator<V, E>
         }
     }
 
-    /**
-     * Generates an arc capacity. This capacity can be infinite.
-     *
-     * @return the generated arc capacity.
-     */
-    private int getCapacity()
-    {
-        int percent = generateBetween(1, 100);
-        if (percent <= config.getPercentCapacitated()) {
-            return generateBetween(config.getMinCap(), config.getMaxCap());
-        } else {
-            return Integer.MAX_VALUE;
-        }
-    }
-
-    /**
-     * Generates an arc cost. This cost can be infinite.
-     *
-     * @return the generated arc cost.
-     */
-    private int getCost()
-    {
-        int percent = generateBetween(1, 100);
-        if (percent <= config.getPercentWithInfCost()) {
-            return Integer.MAX_VALUE;
-        } else {
-            return generateBetween(config.getMinCost(), config.getMaxCost());
-        }
-    }
-
     private int generatePositiveRandom(int boundInclusive)
     {
         return rng.nextInt(boundInclusive) + 1;
@@ -852,7 +826,7 @@ public class NetworkGenerator<V, E>
      * @param endInclusive upper bound
      * @return the generated number
      */
-    private int generateBetween(int startInclusive, int endInclusive)
+    int generateBetween(int startInclusive, int endInclusive)
     {
         return rng.nextInt(endInclusive - startInclusive + 1) + startInclusive;
     }

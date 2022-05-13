@@ -118,27 +118,7 @@ public class GnpRandomBipartiteGraphGenerator<V, E>
     @Override
     public void generateGraph(Graph<V, E> target, Map<String, V> resultMap)
     {
-        if (n1 + n2 == 0) {
-            return;
-        }
-
-        // create vertices
-        int previousVertexSetSize = target.vertexSet().size();
-
-        partitionA = new ArrayList<>(n1);
-        for (int i = 0; i < n1; i++) {
-            partitionA.add(target.addVertex());
-        }
-
-        partitionB = new ArrayList<>(n2);
-        for (int i = 0; i < n2; i++) {
-            partitionB.add(target.addVertex());
-        }
-
-        if (target.vertexSet().size() != previousVertexSetSize + n1 + n2) {
-            throw new IllegalArgumentException(
-                "Vertex factory did not produce " + (n1 + n2) + " distinct vertices.");
-        }
+    	extracted(target);
 
         // check if graph is directed
         boolean isDirected = target.getType().isDirected();
@@ -164,6 +144,30 @@ public class GnpRandomBipartiteGraphGenerator<V, E>
         }
 
     }
+
+	private void extracted(Graph<V, E> target) {
+		if (n1 + n2 == 0) {
+            return;
+        }
+
+        // create vertices
+        int previousVertexSetSize = target.vertexSet().size();
+
+        partitionA = new ArrayList<>(n1);
+        for (int i = 0; i < n1; i++) {
+            partitionA.add(target.addVertex());
+        }
+
+        partitionB = new ArrayList<>(n2);
+        for (int i = 0; i < n2; i++) {
+            partitionB.add(target.addVertex());
+        }
+
+        if (target.vertexSet().size() != previousVertexSetSize + n1 + n2) {
+            throw new IllegalArgumentException(
+                "Vertex factory did not produce " + (n1 + n2) + " distinct vertices.");
+        }
+	}
 
     /**
      * Returns the first partition of vertices in the bipartite graph. This partition is guaranteed
