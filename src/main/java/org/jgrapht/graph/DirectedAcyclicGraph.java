@@ -535,13 +535,12 @@ public class DirectedAcyclicGraph<V, E>
         // assume (for now) that we are resetting visited
         boolean clearVisited = true;
 
-        for (V vertex : topoDb) {
+        bigL = bigL(topoDf, topoDb, bigL, lIndex);
+		for (V vertex : topoDb) {
             Integer topoIndex = topoOrderMap.getTopologicalIndex(vertex);
 
             // add the available indices to the set
             availableTopoIndices.add(topoIndex);
-
-            bigL[lIndex++] = vertex;
 
             if (clearVisited) { // reset visited status if supported
                 try {
@@ -557,8 +556,6 @@ public class DirectedAcyclicGraph<V, E>
 
             // add the available indices to the set
             availableTopoIndices.add(topoIndex);
-            bigL[lIndex++] = vertex;
-
             if (clearVisited) { // reset visited status if supported
                 try {
                     visited.clearVisited(topoIndex);
@@ -575,6 +572,16 @@ public class DirectedAcyclicGraph<V, E>
             topoOrderMap.putVertex(topoIndex, vertex);
         }
     }
+
+	private <V> V[] bigL(List<V> topoDf, List<V> topoDb, V[] bigL, int lIndex) {
+		for (V vertex : topoDb) {
+			bigL[lIndex++] = vertex;
+		}
+		for (V vertex : topoDf) {
+			bigL[lIndex++] = vertex;
+		}
+		return bigL;
+	}
 
     /**
      * An interface for storing the topological ordering.
