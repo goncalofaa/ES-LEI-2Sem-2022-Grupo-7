@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b33a9705-ed7e-46a7-963f-51e7c5a7e17a" name="Changes" comment="Vers\ao Final" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Guilherme" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="28ySCYRurU8XT1hVoTwe783c59N" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="org.jgrapht.graph" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="FastTestSuite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jgrapht-core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.jgrapht.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.jgrapht" />
+      <option name="MAIN_CLASS_NAME" value="org.jgrapht.FastTestSuite" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.FastTestSuite" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b33a9705-ed7e-46a7-963f-51e7c5a7e17a" name="Changes" comment="" />
+      <created>1652187206593</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652187206593</updated>
+      <workItem from="1652187217916" duration="1074000" />
+      <workItem from="1652188868163" duration="7016000" />
+      <workItem from="1652215766615" duration="3685000" />
+      <workItem from="1652224476554" duration="1108000" />
+      <workItem from="1652301851136" duration="23000" />
+      <workItem from="1652394405555" duration="696000" />
+      <workItem from="1652461485777" duration="1112000" />
+      <workItem from="1652463695522" duration="1753000" />
+      <workItem from="1652467431450" duration="1242000" />
+      <workItem from="1652479967360" duration="1706000" />
+      <workItem from="1652548294672" duration="3734000" />
+      <workItem from="1652565683828" duration="62000" />
+    </task>
+    <task id="LOCAL-00001" summary="Branch">
+      <created>1652187309196</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1652187309196</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Refactor LongMethod org.jgrapht.generate.GnmRandomGraphGenerator.generateGraph()">
+      <created>1652188930287</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652188930287</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Refactor LongMethod org.jgrapht.generate.NamedGraphGenerator.generateGossetGraph()">
+      <created>1652190059170</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1652190059170</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Refactor LongMethod org.jgrapht.generate.PruferTreeGenerator.generateGraph()&#10;&#10;Dividi o método em duas partes, já que o problema do método era o número de linhas.">
+      <created>1652191341779</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1652191341779</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Refactor LongMethod org.jgrapht.generate.PruferTreeGenerator.generateGraph()&#10;&#10;Dividi o método em duas partes, já que o problema do método era o número de linhas.">
+      <created>1652191626207</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1652191626207</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Refactor LongMethod org.jgrapht.generate.PruferTreeGenerator.generateGraph()&#10;&#10;Corrigi o refactor.&#10;Dividi o método em quatro partes, já que o problema do método era o número de linhas.">
+      <created>1652194036610</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1652194036610</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Refactor LongMethod org.jgrapht.graph.builder.GraphTypeBuilder.Graph()&#10;&#10;Corrigi o refactor.&#10;Dividi o método em 4 partes, já que o problema do método era o número de linhas.">
+      <created>1652215258183</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1652215258183</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Refactor GodClass org.jgrapht.graph.DefaultGraphType.Builder">
+      <created>1652215975138</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1652215975138</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Refactor GodClass org.jgrapht.graph.MaskSubgraph.java">
+      <created>1652220223858</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1652220223858</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Rollback refactor GnpRandomGraphGenerator.java">
+      <created>1652224618186</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1652224618186</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Refactor LongMethod org.jgrapht.generate.GnmRandomGraphGenerator.gene…&#10;…rateGraph()">
+      <created>1652224905805</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1652224905805</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fixed JUnit tests">
+      <created>1652480528194</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1652480528194</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Vers\ao Final">
+      <created>1652551498278</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1652551498278</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Branch" />
+    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.GnmRandomGraphGenerator.generateGraph()" />
+    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.NamedGraphGenerator.generateGossetGraph()" />
+    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.PruferTreeGenerator.generateGraph()&#10;&#10;Dividi o método em duas partes, já que o problema do método era o número de linhas." />
+    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.PruferTreeGenerator.generateGraph()&#10;&#10;Corrigi o refactor.&#10;Dividi o método em quatro partes, já que o problema do método era o número de linhas." />
+    <MESSAGE value="Refactor LongMethod org.jgrapht.graph.builder.GraphTypeBuilder.Graph()&#10;&#10;Corrigi o refactor.&#10;Dividi o método em 4 partes, já que o problema do método era o número de linhas." />
+    <MESSAGE value="Refactor GodClass org.jgrapht.graph.DefaultGraphType.Builder" />
+    <MESSAGE value="Refactor GodClass org.jgrapht.graph.MaskSubgraph.java" />
+    <MESSAGE value="Rollback refactor GnpRandomGraphGenerator.java" />
+    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.GnmRandomGraphGenerator.gene…&#10;…rateGraph()" />
+    <MESSAGE value="Fixed JUnit tests" />
+    <MESSAGE value="Vers\ao Final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vers\ao Final" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ES_LEI_2Sem_2022_Grupo_7$FastTestSuite.ic" NAME="FastTestSuite Coverage Results" MODIFIED="1652550625701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.jgrapht.*</FILTER>
+    </SUITE>
+  </component>
+</project>
