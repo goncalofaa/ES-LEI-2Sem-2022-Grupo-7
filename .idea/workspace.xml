@@ -5,9 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;NetworkGeneratorConfigBuilderProduct&#10;Refactor atraves do JDeodorant">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/DGT_Builder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/DefaultGraphType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/DefaultGraphType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/org.jgrapht/jgrapht-core/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/maven/org.jgrapht/jgrapht-core/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/AsGraphUnion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/AsGraphUnion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DefaultDirectedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DefaultDirectedGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DefaultGraphType$Builder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DefaultGraphType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DefaultGraphType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DefaultUndirectedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DefaultUndirectedGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DirectedAcyclicGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DirectedAcyclicGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DirectedMultigraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DirectedMultigraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DirectedPseudograph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/DirectedPseudograph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/Multigraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/Multigraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/Pseudograph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/Pseudograph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/SimpleDirectedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/SimpleDirectedGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/SimpleGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/SimpleGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/builder/GraphTypeBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/jgrapht/graph/builder/GraphTypeBuilder.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
