@@ -50,7 +50,8 @@ public class AVLTree<T>
     implements
     Iterable<T>
 {
-    /**
+    private AVLTreeProduct aVLTreeProduct = new AVLTreeProduct();
+	/**
      * An auxiliary node which's always present in a tree and doesn't contain any data.
      */
     private TreeNode<T> virtualRoot = new TreeNode<>(null);
@@ -182,10 +183,10 @@ public class AVLTree<T>
 
             while (t != left) {
                 TreeNode<T> p = t.parent;
-                p.substituteChild(t, balanceNode(t));
+                p.substituteChild(t, AVLTreeProduct.balanceNode(t));
                 t = p;
             }
-            left = balanceNode(left);
+            left = AVLTreeProduct.balanceNode(left);
 
         }
         return split(left, right, parent, nextMove);
@@ -456,20 +457,20 @@ public class AVLTree<T>
             return junctionNode;
         } else if (left == null) {
             right.setLeftChild(merge(junctionNode, left, right.left));
-            return balanceNode(right);
+            return AVLTreeProduct.balanceNode(right);
         } else if (right == null) {
             left.setRightChild(merge(junctionNode, left.right, right));
-            return balanceNode(left);
+            return AVLTreeProduct.balanceNode(left);
         } else if (left.getHeight() > right.getHeight() + 1) {
             left.setRightChild(merge(junctionNode, left.right, right));
-            return balanceNode(left);
+            return AVLTreeProduct.balanceNode(left);
         } else if (right.getHeight() > left.getHeight() + 1) {
             right.setLeftChild(merge(junctionNode, left, right.left));
-            return balanceNode(right);
+            return AVLTreeProduct.balanceNode(right);
         } else {
             junctionNode.setLeftChild(left);
             junctionNode.setRightChild(right);
-            return balanceNode(junctionNode);
+            return AVLTreeProduct.balanceNode(junctionNode);
         }
     }
 
@@ -483,47 +484,6 @@ public class AVLTree<T>
         TreeNode<T> t = virtualRoot.left;
         makeRoot(tree.virtualRoot.left);
         tree.makeRoot(t);
-    }
-
-    /**
-     * Performs a right node rotation.
-     *
-     * @param node a node to rotate
-     * @return a new parent of the {@code node}
-     */
-    private TreeNode<T> rotateRight(TreeNode<T> node)
-    {
-        TreeNode<T> left = node.left;
-        left.parent = null;
-
-        node.setLeftChild(left.right);
-        left.setRightChild(node);
-
-        node.updateHeightAndSubtreeSize();
-        left.updateHeightAndSubtreeSize();
-
-        return left;
-    }
-
-    /**
-     * Performs a left node rotation.
-     *
-     * @param node a node to rotate
-     * @return a new parent of the {@code node}
-     */
-    private TreeNode<T> rotateLeft(TreeNode<T> node)
-    {
-        TreeNode<T> right = node.right;
-        right.parent = null;
-
-        node.setRightChild(right.left);
-
-        right.setLeftChild(node);
-
-        node.updateHeightAndSubtreeSize();
-        right.updateHeightAndSubtreeSize();
-
-        return right;
     }
 
     /**
@@ -549,37 +509,12 @@ public class AVLTree<T>
         }
         TreeNode<T> p = node.parent;
         if (p == virtualRoot) {
-            makeRoot(balanceNode(node));
+            makeRoot(AVLTreeProduct.balanceNode(node));
         } else {
-            p.substituteChild(node, balanceNode(node));
+            p.substituteChild(node, AVLTreeProduct.balanceNode(node));
         }
 
         balance(p, stop);
-    }
-
-    /**
-     * Checks whether the {@code node} is unbalanced. If so, balances the {@code node}
-     *
-     * @param node a node to balance
-     * @return a new parent of {@code node} if the balancing occurs, {@code node} otherwise
-     */
-    private TreeNode<T> balanceNode(TreeNode<T> node)
-    {
-        node.updateHeightAndSubtreeSize();
-        if (node.isLeftDoubleHeavy()) {
-            if (node.left.isRightHeavy()) {
-                node.setLeftChild(rotateLeft(node.left));
-            }
-            rotateRight(node);
-            return node.parent;
-        } else if (node.isRightDoubleHeavy()) {
-            if (node.right.isLeftHeavy()) {
-                node.setRightChild(rotateRight(node.right));
-            }
-            rotateLeft(node);
-            return node.parent;
-        }
-        return node;
     }
 
     /**
