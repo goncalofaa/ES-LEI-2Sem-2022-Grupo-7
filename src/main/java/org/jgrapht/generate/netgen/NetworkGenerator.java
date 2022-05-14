@@ -509,14 +509,9 @@ public class NetworkGenerator<V, E>
         int chainToSinkArcUB = (int) Math.min(source2SinkUB + tNode2SinkUB, MAX_ARC_NUM);
         chainToSinkArcs = Math.min(chainToSinkArcUB, chainToSinkArcs);
 
-        List<Node> sources = getSources();
+        int supplyAndSinkNumUB = supplyAndSinkNumUB();
+		List<Node> sources = getSources();
 
-        // this sum is at least max(sourceNum, sinkNum)
-        // because config.getTotalSupply() >= max(sourceNum, sinkNum)
-        int supplyAndSinkNumUB = 0;
-        for (Node source : sources) {
-            supplyAndSinkNumUB += Math.min(config.getSinkNum(), source.supply);
-        }
         chainToSinkArcs = Math.min(chainToSinkArcs, supplyAndSinkNumUB);
 
         // distributing sinks among sources
@@ -571,6 +566,15 @@ public class NetworkGenerator<V, E>
         }
 
     }
+
+	private int supplyAndSinkNumUB() {
+		List<Node> sources = getSources();
+		int supplyAndSinkNumUB = 0;
+		for (Node source : sources) {
+			supplyAndSinkNumUB += Math.min(config.getSinkNum(), source.supply);
+		}
+		return supplyAndSinkNumUB;
+	}
 
     /**
      * Generates remaining arcs to satisfy the arcNum constraint.
