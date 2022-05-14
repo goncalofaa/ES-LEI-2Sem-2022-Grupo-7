@@ -184,13 +184,8 @@ public class RandomRegularGraphGenerator<V, E>
      */
     private void generateSimpleRegularGraph(Graph<V, E> target)
     {
-        // integers to vertices
-        List<V> vertices = new ArrayList<>(n);
-        for (int i = 0; i < n; i++) {
-            vertices.add(target.addVertex());
-        }
-
-        // set of final edges to add to target graph
+        target(target);
+		// set of final edges to add to target graph
         Set<Map.Entry<Integer, Integer>> edges = CollectionUtil.newHashSetWithExpectedSize(n * d);
         do {
             List<Integer> stubs = new ArrayList<>(n * d);
@@ -238,12 +233,18 @@ public class RandomRegularGraphGenerator<V, E>
             }
 
         } while (edges.isEmpty());
-
-        // add edges to target
-        for (Map.Entry<Integer, Integer> e : edges) {
-            target.addEdge(vertices.get(e.getKey()), vertices.get(e.getValue()));
-        }
     }
+
+	private <V, E> void target(Graph<V, E> target) {
+		List<V> vertices = new ArrayList<>(n);
+		for (int i = 0; i < n; i++) {
+			vertices.add(target.addVertex());
+		}
+		Set<Map.Entry<Integer, Integer>> edges = CollectionUtil.newHashSetWithExpectedSize(n * d);
+		for (Map.Entry<Integer, Integer> e : edges) {
+			target.addEdge(vertices.get(e.getKey()), vertices.get(e.getValue()));
+		}
+	}
 
     /*
      * Generate non-simple regular graph.

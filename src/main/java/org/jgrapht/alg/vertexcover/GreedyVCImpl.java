@@ -91,8 +91,7 @@ public class GreedyVCImpl<V, E>
     {
         Set<V> cover = new LinkedHashSet<>();
         double weight = 0;
-
-        // Create working graph: for every vertex, create a RatioVertex which maintains its own list
+		// Create working graph: for every vertex, create a RatioVertex which maintains its own list
         // of neighbors
         Map<V, RatioVertex<V>> vertexEncapsulationMap = new HashMap<>();
         graph

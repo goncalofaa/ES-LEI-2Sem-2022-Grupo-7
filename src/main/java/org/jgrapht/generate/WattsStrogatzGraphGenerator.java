@@ -147,32 +147,13 @@ public class WattsStrogatzGraphGenerator<V, E>
     @Override
     public void generateGraph(Graph<V, E> target, Map<String, V> resultMap)
     {
-        // special cases
-        if (n == 0) {
-            return;
-        } else if (n == 1) {
-            target.addVertex();
-            return;
-        }
+        extracted(target);
 
         // create ring lattice
         List<V> ring = new ArrayList<>(n);
         Map<V, List<E>> adj = CollectionUtil.newLinkedHashMapWithExpectedSize(n);
 
-        for (int i = 0; i < n; i++) {
-            V v = target.addVertex();
-            ring.add(v);
-            adj.put(v, new ArrayList<>(k));
-        }
-
-        for (int i = 0; i < n; i++) {
-            V vi = ring.get(i);
-            List<E> viAdj = adj.get(vi);
-
-            for (int j = 1; j <= k / 2; j++) {
-                viAdj.add(target.addEdge(vi, ring.get((i + j) % n)));
-            }
-        }
+        extracted(target, ring, adj);
 
         // re-wire edges
         for (int r = 0; r < k / 2; r++) {
@@ -192,5 +173,32 @@ public class WattsStrogatzGraphGenerator<V, E>
         }
 
     }
+
+	private void extracted(Graph<V, E> target, List<V> ring, Map<V, List<E>> adj) {
+		for (int i = 0; i < n; i++) {
+            V v = target.addVertex();
+            ring.add(v);
+            adj.put(v, new ArrayList<>(k));
+        }
+
+        for (int i = 0; i < n; i++) {
+            V vi = ring.get(i);
+            List<E> viAdj = adj.get(vi);
+
+            for (int j = 1; j <= k / 2; j++) {
+                viAdj.add(target.addEdge(vi, ring.get((i + j) % n)));
+            }
+        }
+	}
+
+	private void extracted(Graph<V, E> target) {
+		// special cases
+        if (n == 0) {
+            return;
+        } else if (n == 1) {
+            target.addVertex();
+            return;
+        }
+	}
 
 }

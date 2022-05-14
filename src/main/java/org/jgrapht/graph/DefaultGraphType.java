@@ -53,8 +53,8 @@ public class DefaultGraphType
     private final boolean modifiable;
 
     public DefaultGraphType(
-            boolean directed, boolean undirected, boolean selfLoops, boolean multipleEdges,
-            boolean weighted, boolean allowsCycles, boolean modifiable)
+        boolean directed, boolean undirected, boolean selfLoops, boolean multipleEdges,
+        boolean weighted, boolean allowsCycles, boolean modifiable)
     {
         this.directed = directed;
         this.undirected = undirected;
@@ -134,43 +134,43 @@ public class DefaultGraphType
     @Override
     public GraphType asDirected()
     {
-        return new Builder(this).directed().build();
+        return new DGT_Builder(this).directed().build();
     }
 
     @Override
     public GraphType asUndirected()
     {
-        return new Builder(this).undirected().build();
+        return new DGT_Builder(this).undirected().build();
     }
 
     @Override
     public GraphType asMixed()
     {
-        return new Builder(this).mixed().build();
+        return new DGT_Builder(this).mixed().build();
     }
 
     @Override
     public GraphType asUnweighted()
     {
-        return new Builder(this).weighted(false).build();
+        return new DGT_Builder(this).weighted(false).build();
     }
 
     @Override
     public GraphType asWeighted()
     {
-        return new Builder(this).weighted(true).build();
+        return new DGT_Builder(this).weighted(true).build();
     }
 
     @Override
     public GraphType asModifiable()
     {
-        return new Builder(this).modifiable(true).build();
+        return new DGT_Builder(this).modifiable(true).build();
     }
 
     @Override
     public GraphType asUnmodifiable()
     {
-        return new Builder(this).modifiable(false).build();
+        return new DGT_Builder(this).modifiable(false).build();
     }
 
     /**
@@ -181,7 +181,7 @@ public class DefaultGraphType
      */
     public static DefaultGraphType simple()
     {
-        return new Builder()
+        return new DGT_Builder()
             .undirected().allowSelfLoops(false).allowMultipleEdges(false).weighted(false).build();
     }
 
@@ -193,7 +193,7 @@ public class DefaultGraphType
      */
     public static DefaultGraphType multigraph()
     {
-        return new Builder()
+        return new DGT_Builder()
             .undirected().allowSelfLoops(false).allowMultipleEdges(true).weighted(false).build();
     }
 
@@ -205,7 +205,7 @@ public class DefaultGraphType
      */
     public static DefaultGraphType pseudograph()
     {
-        return new Builder()
+        return new DGT_Builder()
             .undirected().allowSelfLoops(true).allowMultipleEdges(true).weighted(false).build();
     }
 
@@ -217,7 +217,7 @@ public class DefaultGraphType
      */
     public static DefaultGraphType directedSimple()
     {
-        return new Builder()
+        return new DGT_Builder()
             .directed().allowSelfLoops(false).allowMultipleEdges(false).weighted(false).build();
     }
 
@@ -229,7 +229,7 @@ public class DefaultGraphType
      */
     public static DefaultGraphType directedMultigraph()
     {
-        return new Builder()
+        return new DGT_Builder()
             .directed().allowSelfLoops(false).allowMultipleEdges(true).weighted(false).build();
     }
 
@@ -241,7 +241,7 @@ public class DefaultGraphType
      */
     public static DefaultGraphType directedPseudograph()
     {
-        return new Builder()
+        return new DGT_Builder()
             .directed().allowSelfLoops(true).allowMultipleEdges(true).weighted(false).build();
     }
 
@@ -253,7 +253,7 @@ public class DefaultGraphType
      */
     public static DefaultGraphType mixed()
     {
-        return new Builder()
+        return new DGT_Builder()
             .mixed().allowSelfLoops(true).allowMultipleEdges(true).weighted(false).build();
     }
 
@@ -264,7 +264,7 @@ public class DefaultGraphType
      */
     public static DefaultGraphType dag()
     {
-        return new Builder()
+        return new DGT_Builder()
             .directed().allowSelfLoops(false).allowMultipleEdges(true).allowCycles(false)
             .weighted(false).build();
     }
@@ -277,11 +277,8 @@ public class DefaultGraphType
             + weighted + ", allows-cycles=" + allowsCycles + ", modifiable=" + modifiable + "]";
     }
 
-    /**
-     * A builder for {@link DefaultGraphType}.
-     * 
-     * @author Dimitrios Michail
-     */
+
+
 
 
 }

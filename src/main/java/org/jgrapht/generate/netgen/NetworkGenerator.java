@@ -21,7 +21,6 @@ import org.jgrapht.Graph;
 import org.jgrapht.GraphTests;
 import org.jgrapht.Graphs;
 import org.jgrapht.alg.flow.mincost.MinimumCostFlowProblem;
-import org.jgrapht.alg.util.Pair;
 import org.jgrapht.util.CollectionUtil;
 import org.jgrapht.util.ElementsSequenceGenerator;
 
@@ -132,7 +131,7 @@ public class NetworkGenerator<V, E>
     /**
      * User-provided network configuration.
      */
-    private final NetworkGeneratorConfig config;
+    final NetworkGeneratorConfig config;
     /**
      * Random number generator used to create a network.
      */
@@ -158,7 +157,7 @@ public class NetworkGenerator<V, E>
      * sourceNum + transshipNodeNum, nodeNum - pureSinkNum ) - transshipment sink nodes - [ nodeNum
      * - pureSinkNum, nodeNum ) - pure sink nodes
      */
-    private List<Node> nodes;
+    List<Node> nodes;
     /**
      * Mapping for converting graph vertices to their internal representation as nodes.
      */
@@ -509,14 +508,9 @@ public class NetworkGenerator<V, E>
         int chainToSinkArcUB = (int) Math.min(source2SinkUB + tNode2SinkUB, MAX_ARC_NUM);
         chainToSinkArcs = Math.min(chainToSinkArcUB, chainToSinkArcs);
 
-        List<Node> sources = getSources();
+        int supplyAndSinkNumUB = supplyAndSinkNumUB();
+		List<Node> sources = getSources();
 
-        // this sum is at least max(sourceNum, sinkNum)
-        // because config.getTotalSupply() >= max(sourceNum, sinkNum)
-        int supplyAndSinkNumUB = 0;
-        for (Node source : sources) {
-            supplyAndSinkNumUB += Math.min(config.getSinkNum(), source.supply);
-        }
         chainToSinkArcs = Math.min(chainToSinkArcs, supplyAndSinkNumUB);
 
         // distributing sinks among sources
@@ -572,6 +566,15 @@ public class NetworkGenerator<V, E>
 
     }
 
+	private int supplyAndSinkNumUB() {
+		List<Node> sources = getSources();
+		int supplyAndSinkNumUB = 0;
+		for (Node source : sources) {
+			supplyAndSinkNumUB += Math.min(config.getSinkNum(), source.supply);
+		}
+		return supplyAndSinkNumUB;
+	}
+
     /**
      * Generates remaining arcs to satisfy the arcNum constraint.
      */
@@ -622,9 +625,9 @@ public class NetworkGenerator<V, E>
         generateArcs(getTransshipNodes(), getTransshipNodes(), arcNumDistribution.get(4));
         generateArcs(getTransshipNodes(), getSinks(), arcNumDistribution.get(5));
 
-        generateArcs(getTransshipSinks(), getTransshipSources(), arcNumDistribution.get(6));
-        generateArcs(getTransshipSinks(), getTransshipNodes(), arcNumDistribution.get(7));
-        generateArcs(getTransshipSinks(), getSinks(), arcNumDistribution.get(8));
+        generateArcs(config.getTransshipSinks(this), getTransshipSources(), arcNumDistribution.get(6));
+        generateArcs(config.getTransshipSinks(this), getTransshipNodes(), arcNumDistribution.get(7));
+        generateArcs(config.getTransshipSinks(this), getSinks(), arcNumDistribution.get(8));
 
         assert config.getArcNum() - graph.edgeSet().size() == 0;
     }
@@ -664,21 +667,25 @@ public class NetworkGenerator<V, E>
         // For every tail, generate the assigned number of arcs.
         for (int i = 0; i < tails.size(); i++) {
 
-            Node tail = tails.get(i);
-            int tailArcNum = arcNumDistribution.get(i);
-
-            ElementsSequenceGenerator<Node> headGenerator =
-                new ElementsSequenceGenerator<>(heads, rng);
-            while (tailArcNum > 0 && headGenerator.hasNext()) {
-                Node currentHead = headGenerator.next();
-                if (isValidArc(tail, currentHead)) {
-                    --tailArcNum;
-                    addArc(tail, currentHead);
-                }
-            }
-            assert tailArcNum == 0;
+            int tailArcNum = tailArcNum(tails, heads, arcNumDistribution, i);
+			assert tailArcNum == 0;
         }
     }
+
+	private int tailArcNum(List<NetworkGenerator<V, E>.Node> tails, List<NetworkGenerator<V, E>.Node> heads,
+			List<Integer> arcNumDistribution, int i) {
+		Node tail = tails.get(i);
+		int tailArcNum = arcNumDistribution.get(i);
+		ElementsSequenceGenerator<Node> headGenerator = new ElementsSequenceGenerator<>(heads, rng);
+		while (tailArcNum > 0 && headGenerator.hasNext()) {
+			Node currentHead = headGenerator.next();
+			if (isValidArc(tail, currentHead)) {
+				--tailArcNum;
+				addArc(tail, currentHead);
+			}
+		}
+		return tailArcNum;
+	}
 
     /**
      * Returns the number of arcs it is possible to generate from {@code node} to the {@code nodes}
@@ -739,8 +746,8 @@ public class NetworkGenerator<V, E>
     {
         assert isValidArc(tail, head);
         E arc = graph.addEdge(tail.graphVertex, head.graphVertex);
-        capacityMap.put(arc, Math.max(getCapacity(), chainSource.supply));
-        costMap.put(arc, getCost());
+        capacityMap.put(arc, Math.max(config.getCapacity(this), chainSource.supply));
+        costMap.put(arc, config.getCost(this));
 
         registerSkeletonArc(tail, head);
         networkInfo.registerChainArc(arc);
@@ -760,8 +767,8 @@ public class NetworkGenerator<V, E>
         assert isValidArc(tail, head);
         E edge = graph.addEdge(tail.graphVertex, head.graphVertex);
 
-        capacityMap.put(edge, getCapacity());
-        costMap.put(edge, getCost());
+        capacityMap.put(edge, config.getCapacity(this));
+        costMap.put(edge, config.getCost(this));
     }
 
     /**
@@ -809,36 +816,6 @@ public class NetworkGenerator<V, E>
         }
     }
 
-    /**
-     * Generates an arc capacity. This capacity can be infinite.
-     *
-     * @return the generated arc capacity.
-     */
-    private int getCapacity()
-    {
-        int percent = generateBetween(1, 100);
-        if (percent <= config.getPercentCapacitated()) {
-            return generateBetween(config.getMinCap(), config.getMaxCap());
-        } else {
-            return Integer.MAX_VALUE;
-        }
-    }
-
-    /**
-     * Generates an arc cost. This cost can be infinite.
-     *
-     * @return the generated arc cost.
-     */
-    private int getCost()
-    {
-        int percent = generateBetween(1, 100);
-        if (percent <= config.getPercentWithInfCost()) {
-            return Integer.MAX_VALUE;
-        } else {
-            return generateBetween(config.getMinCost(), config.getMaxCost());
-        }
-    }
-
     private int generatePositiveRandom(int boundInclusive)
     {
         return rng.nextInt(boundInclusive) + 1;
@@ -852,7 +829,7 @@ public class NetworkGenerator<V, E>
      * @param endInclusive upper bound
      * @return the generated number
      */
-    private int generateBetween(int startInclusive, int endInclusive)
+    int generateBetween(int startInclusive, int endInclusive)
     {
         return rng.nextInt(endInclusive - startInclusive + 1) + startInclusive;
     }
@@ -897,19 +874,6 @@ public class NetworkGenerator<V, E>
     {
         return nodes
             .subList(config.getSourceNum(), config.getSourceNum() + config.getTransshipNodeNum());
-    }
-
-    /**
-     * Returns a list containing generated transshipment sinks.
-     *
-     * @return a list containing generated transshipment sinks.
-     */
-    private List<Node> getTransshipSinks()
-    {
-        return nodes
-            .subList(
-                config.getSourceNum() + config.getTransshipNodeNum(),
-                nodes.size() - config.getPureSinkNum());
     }
 
     /**
@@ -979,7 +943,7 @@ public class NetworkGenerator<V, E>
      * Internal representation of network nodes. This class is used to store auxiliary information
      * during generation process.
      */
-    private class Node
+    class Node
     {
         /**
          * Graph vertex counterpart of this node.

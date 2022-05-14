@@ -107,7 +107,7 @@ public class RandomRegularGraphGeneratorTest
     public void testSimpleGraph()
     {
         int n = 100;
-        int d = 20;
+        int d = 0;
         GraphGenerator<Integer, DefaultEdge, Integer> gen =
             new RandomRegularGraphGenerator<>(n, d, SEED);
         Graph<Integer, DefaultEdge> g = new SimpleGraph<>(
