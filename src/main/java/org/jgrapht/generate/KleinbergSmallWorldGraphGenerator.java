@@ -188,25 +188,8 @@ public class KleinbergSmallWorldGraphGenerator<V, E>
             for (int j = 0; j < n; j++) {
                 V v = nodes.get(i * n + j);
 
-                /*
-                 * Create inverse r power distribution
-                 */
-                double sum = 0d;
-                for (int oi = 0; oi < n; oi++) {
-                    for (int oj = 0; oj < n; oj++) {
-                        if (oi != i || oj != j) {
-                            double weight = Math.pow(Math.abs(i - oi) + Math.abs(j - oj), -r);
-                            p[oi * n + oj] = weight;
-                            sum += weight;
-                        }
-                    }
-                }
-                p[i * n + j] = 0d;
-                for (int k = 0; k < n * n; k++) {
-                    p[k] /= sum;
-                }
-
-                /*
+                p = p(p, i, j);
+				/*
                  * Sample from distribution and add long-range edges
                  */
                 AliasMethodSampler sampler = new AliasMethodSampler(p, rng);
@@ -219,5 +202,23 @@ public class KleinbergSmallWorldGraphGenerator<V, E>
             }
         }
     }
+
+	private double[] p(double[] p, int i, int j) {
+		double sum = 0d;
+		for (int oi = 0; oi < n; oi++) {
+			for (int oj = 0; oj < n; oj++) {
+				if (oi != i || oj != j) {
+					double weight = Math.pow(Math.abs(i - oi) + Math.abs(j - oj), -r);
+					p[oi * n + oj] = weight;
+					sum += weight;
+				}
+			}
+		}
+		p[i * n + j] = 0d;
+		for (int k = 0; k < n * n; k++) {
+			p[k] /= sum;
+		}
+		return p;
+	}
 
 }
