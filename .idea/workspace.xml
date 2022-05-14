@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b33a9705-ed7e-46a7-963f-51e7c5a7e17a" name="Changes" comment="Vers\ao Final" />
+    <list default="true" id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;NetworkGeneratorConfigBuilderProduct&#10;Refactor atraves do JDeodorant">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/DGT_Builder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/DefaultGraphType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/DefaultGraphType.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,23 +24,15 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Guilherme" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="28ySCYRurU8XT1hVoTwe783c59N" />
+  <component name="ProjectId" id="28yTF7AOFWeExnD2WpiUnsJbkbj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -45,194 +41,92 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-  </component>
-  <component name="RecentsManager">
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="org.jgrapht.graph" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="FastTestSuite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="jgrapht-core" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.jgrapht.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.jgrapht" />
-      <option name="MAIN_CLASS_NAME" value="org.jgrapht.FastTestSuite" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.FastTestSuite" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b33a9705-ed7e-46a7-963f-51e7c5a7e17a" name="Changes" comment="" />
-      <created>1652187206593</created>
+      <changelist id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="" />
+      <created>1652187718881</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1652187206593</updated>
-      <workItem from="1652187217916" duration="1074000" />
-      <workItem from="1652188868163" duration="7016000" />
-      <workItem from="1652215766615" duration="3685000" />
-      <workItem from="1652224476554" duration="1108000" />
-      <workItem from="1652301851136" duration="23000" />
-      <workItem from="1652394405555" duration="696000" />
-      <workItem from="1652461485777" duration="1112000" />
-      <workItem from="1652463695522" duration="1753000" />
-      <workItem from="1652467431450" duration="1242000" />
-      <workItem from="1652479967360" duration="1706000" />
-      <workItem from="1652548294672" duration="3734000" />
-      <workItem from="1652565683828" duration="62000" />
+      <updated>1652187718881</updated>
     </task>
-    <task id="LOCAL-00001" summary="Branch">
-      <created>1652187309196</created>
+    <task id="LOCAL-00001" summary="Refactor LongMethod org.jgrapht.generate.DirectedScaleFreeGraphGenerator public void generateGraph(Graph&lt;V,E&gt;, Map&lt;java.lang.String,V&gt;)">
+      <created>1652189390519</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1652187309196</updated>
+      <updated>1652189390519</updated>
     </task>
-    <task id="LOCAL-00002" summary="Refactor LongMethod org.jgrapht.generate.GnmRandomGraphGenerator.generateGraph()">
-      <created>1652188930287</created>
+    <task id="LOCAL-00002" summary="Refactor LongMethod org.jgrapht.generate.DirectedScaleFreeGraphGenerator public void generateGraph(Graph&lt;V,E&gt;, Map&lt;java.lang.String,V&gt;)">
+      <created>1652189430348</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1652188930287</updated>
+      <updated>1652189430348</updated>
     </task>
-    <task id="LOCAL-00003" summary="Refactor LongMethod org.jgrapht.generate.NamedGraphGenerator.generateGossetGraph()">
-      <created>1652190059170</created>
+    <task id="LOCAL-00003" summary="Refactor LongMethod org.jgrapht.alg.transform.LineGraphConverter.java convertToLineGraph&#10;Tinha um if/else com 3 for dentro de cada e separei criando 2 métodos">
+      <created>1652190102463</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1652190059170</updated>
+      <updated>1652190102463</updated>
     </task>
-    <task id="LOCAL-00004" summary="Refactor LongMethod org.jgrapht.generate.PruferTreeGenerator.generateGraph()&#10;&#10;Dividi o método em duas partes, já que o problema do método era o número de linhas.">
-      <created>1652191341779</created>
+    <task id="LOCAL-00004" summary="Refactor LongMethod org.jgrapht.alg.transform.LineGraphConverter.java convertToLineGraph&#10;Tinha um if/else com 3 for dentro de cada e separei criando 2 métodos">
+      <created>1652190108608</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1652191341779</updated>
+      <updated>1652190108608</updated>
     </task>
-    <task id="LOCAL-00005" summary="Refactor LongMethod org.jgrapht.generate.PruferTreeGenerator.generateGraph()&#10;&#10;Dividi o método em duas partes, já que o problema do método era o número de linhas.">
-      <created>1652191626207</created>
+    <task id="LOCAL-00005" summary="Refactor LongMethod org.jgrapht.generate.GridGraphGenerator.java generateGraph&#10;Tinha um método que a partir de uma lista entrava em 3 for.&#10;Dividi o metodo em 2 refactores que reduziu a complexidade">
+      <created>1652190761800</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1652191626207</updated>
+      <updated>1652190761800</updated>
     </task>
-    <task id="LOCAL-00006" summary="Refactor LongMethod org.jgrapht.generate.PruferTreeGenerator.generateGraph()&#10;&#10;Corrigi o refactor.&#10;Dividi o método em quatro partes, já que o problema do método era o número de linhas.">
-      <created>1652194036610</created>
+    <task id="LOCAL-00006" summary="Refactor LongMethod org.jgrapht.generate.GridGraphGenerator.java generateGraph&#10;Tinha um método que a partir de uma lista entrava em 3 for.&#10;Dividi o metodo em 2 refactores que reduziu a complexidade">
+      <created>1652190895038</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1652194036610</updated>
+      <updated>1652190895038</updated>
     </task>
-    <task id="LOCAL-00007" summary="Refactor LongMethod org.jgrapht.graph.builder.GraphTypeBuilder.Graph()&#10;&#10;Corrigi o refactor.&#10;Dividi o método em 4 partes, já que o problema do método era o número de linhas.">
-      <created>1652215258183</created>
+    <task id="LOCAL-00007" summary="Refactor LongMethod org.jgrapht.generate.netgen.NetworkGeneratorConfigBuilder.java build&#10;Num primeiro refactor retirei um if/elseif para um novo método&#10;No segundo refactor apenas peguei num método if/elseif e coloquei num novo método (o pofessor disse que a resolução seria atraves do refactor do switch mas nãovalia a pena poism teriamos de alterar todo o código)">
+      <created>1652192911953</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1652215258183</updated>
+      <updated>1652192911953</updated>
     </task>
-    <task id="LOCAL-00008" summary="Refactor GodClass org.jgrapht.graph.DefaultGraphType.Builder">
-      <created>1652215975138</created>
+    <task id="LOCAL-00008" summary="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;NetworkGeneratorConfigBuilderProduct&#10;Refactor atraves do JDeodorant">
+      <created>1652459994606</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1652215975138</updated>
+      <updated>1652459994606</updated>
     </task>
-    <task id="LOCAL-00009" summary="Refactor GodClass org.jgrapht.graph.MaskSubgraph.java">
-      <created>1652220223858</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1652220223858</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Rollback refactor GnpRandomGraphGenerator.java">
-      <created>1652224618186</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1652224618186</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Refactor LongMethod org.jgrapht.generate.GnmRandomGraphGenerator.gene…&#10;…rateGraph()">
-      <created>1652224905805</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1652224905805</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Fixed JUnit tests">
-      <created>1652480528194</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1652480528194</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Vers\ao Final">
-      <created>1652551498278</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1652551498278</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="9" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="main" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Branch" />
-    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.GnmRandomGraphGenerator.generateGraph()" />
-    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.NamedGraphGenerator.generateGossetGraph()" />
-    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.PruferTreeGenerator.generateGraph()&#10;&#10;Dividi o método em duas partes, já que o problema do método era o número de linhas." />
-    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.PruferTreeGenerator.generateGraph()&#10;&#10;Corrigi o refactor.&#10;Dividi o método em quatro partes, já que o problema do método era o número de linhas." />
-    <MESSAGE value="Refactor LongMethod org.jgrapht.graph.builder.GraphTypeBuilder.Graph()&#10;&#10;Corrigi o refactor.&#10;Dividi o método em 4 partes, já que o problema do método era o número de linhas." />
-    <MESSAGE value="Refactor GodClass org.jgrapht.graph.DefaultGraphType.Builder" />
-    <MESSAGE value="Refactor GodClass org.jgrapht.graph.MaskSubgraph.java" />
-    <MESSAGE value="Rollback refactor GnpRandomGraphGenerator.java" />
-    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.GnmRandomGraphGenerator.gene…&#10;…rateGraph()" />
-    <MESSAGE value="Fixed JUnit tests" />
-    <MESSAGE value="Vers\ao Final" />
-    <option name="LAST_COMMIT_MESSAGE" value="Vers\ao Final" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ES_LEI_2Sem_2022_Grupo_7$FastTestSuite.ic" NAME="FastTestSuite Coverage Results" MODIFIED="1652550625701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>org.jgrapht.*</FILTER>
-    </SUITE>
+    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.DirectedScaleFreeGraphGenerator public void generateGraph(Graph&lt;V,E&gt;, Map&lt;java.lang.String,V&gt;)" />
+    <MESSAGE value="Refactor LongMethod org.jgrapht.alg.transform.LineGraphConverter.java convertToLineGraph&#10;Tinha um if/else com 3 for dentro de cada e separei criando 2 métodos" />
+    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.GridGraphGenerator.java generateGraph&#10;Tinha um método que a partir de uma lista entrava em 3 for.&#10;Dividi o metodo em 2 refactores que reduziu a complexidade" />
+    <MESSAGE value="Refactor LongMethod org.jgrapht.generate.netgen.NetworkGeneratorConfigBuilder.java build&#10;Num primeiro refactor retirei um if/elseif para um novo método&#10;No segundo refactor apenas peguei num método if/elseif e coloquei num novo método (o pofessor disse que a resolução seria atraves do refactor do switch mas nãovalia a pena poism teriamos de alterar todo o código)" />
+    <MESSAGE value="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;NetworkGeneratorConfigBuilderProduct&#10;Refactor atraves do JDeodorant" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;NetworkGeneratorConfigBuilderProduct&#10;Refactor atraves do JDeodorant" />
   </component>
 </project>

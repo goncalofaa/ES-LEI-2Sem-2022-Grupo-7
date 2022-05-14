@@ -459,53 +459,15 @@ public class GraphWalk<V, E>
             return;
 
         if (vertexList != null && !vertexList.isEmpty()) {
-            if (!startVertex.equals(vertexList.get(0)))
-                throw new InvalidGraphWalkException(
-                    "The start vertex must be the first vertex in the vertex list");
-            if (!endVertex.equals(vertexList.get(vertexList.size() - 1)))
-                throw new InvalidGraphWalkException(
-                    "The end vertex must be the last vertex in the vertex list");
-            // All vertices and edges in the path must be contained in the graph
-            if (!graph.vertexSet().containsAll(vertexList))
-                throw new InvalidGraphWalkException(
-                    "Not all vertices in the path are contained in the graph");
+            verify_2RefactorBicho();
 
-            if (edgeList == null) {
-                // Verify sequence
-                Iterator<V> it = vertexList.iterator();
-                V u = it.next();
-                while (it.hasNext()) {
-                    V v = it.next();
-                    if (graph.getEdge(u, v) == null)
-                        throw new InvalidGraphWalkException(
-                            "The vertexList does not constitute to a feasible path. Edge (" + u
-                                + "," + v + " does not exist in the graph.");
-                    u = v;
-                }
-            }
+            verify_RefactorBicho();
         }
 
         if (edgeList != null && !edgeList.isEmpty()) {
-            if (!Graphs.testIncidence(graph, edgeList.get(0), startVertex))
-                throw new InvalidGraphWalkException(
-                    "The first edge in the edge list must leave the start vertex");
-            if (!graph.edgeSet().containsAll(edgeList))
-                throw new InvalidGraphWalkException(
-                    "Not all edges in the path are contained in the graph");
+            verify_4RefactorBicho();
 
-            if (vertexList == null) {
-                V u = startVertex;
-                for (E edge : edgeList) {
-                    if (!Graphs.testIncidence(graph, edge, u))
-                        throw new InvalidGraphWalkException(
-                            "The edgeList does not constitute to a feasible path. Conflicting edge: "
-                                + edge);
-                    u = Graphs.getOppositeVertex(graph, edge, u);
-                }
-                if (!u.equals(endVertex))
-                    throw new InvalidGraphWalkException(
-                        "The path defined by the edgeList does not end in the endVertex.");
-            }
+            verify_3RefactorBicho();
         }
 
         if (vertexList != null && edgeList != null) {
@@ -519,20 +481,78 @@ public class GraphWalk<V, E>
                 V v = vertexList.get(i + 1);
                 E edge = getEdgeList().get(i);
 
-                if (graph.getType().isDirected()) { // Directed graph
-                    if (!graph.getEdgeSource(edge).equals(u)
-                        || !graph.getEdgeTarget(edge).equals(v))
-                        throw new InvalidGraphWalkException(
-                            "VertexList and edgeList do not form a feasible path");
-                } else { // Undirected or mixed
-                    if (!Graphs.testIncidence(graph, edge, u)
-                        || !Graphs.getOppositeVertex(graph, edge, u).equals(v))
-                        throw new InvalidGraphWalkException(
-                            "VertexList and edgeList do not form a feasible path");
-                }
+                verify_5RefactorBicho(u, v, edge);
             }
         }
     }
+
+	private void verify_5RefactorBicho(V u, V v, E edge) {
+		if (graph.getType().isDirected()) { // Directed graph
+		    if (!graph.getEdgeSource(edge).equals(u)
+		        || !graph.getEdgeTarget(edge).equals(v))
+		        throw new InvalidGraphWalkException(
+		            "VertexList and edgeList do not form a feasible path");
+		} else { // Undirected or mixed
+		    if (!Graphs.testIncidence(graph, edge, u)
+		        || !Graphs.getOppositeVertex(graph, edge, u).equals(v))
+		        throw new InvalidGraphWalkException(
+		            "VertexList and edgeList do not form a feasible path");
+		}
+	}
+
+	private void verify_4RefactorBicho() {
+		if (!Graphs.testIncidence(graph, edgeList.get(0), startVertex))
+		    throw new InvalidGraphWalkException(
+		        "The first edge in the edge list must leave the start vertex");
+		if (!graph.edgeSet().containsAll(edgeList))
+		    throw new InvalidGraphWalkException(
+		        "Not all edges in the path are contained in the graph");
+	}
+
+	private void verify_3RefactorBicho() {
+		if (vertexList == null) {
+		    V u = startVertex;
+		    for (E edge : edgeList) {
+		        if (!Graphs.testIncidence(graph, edge, u))
+		            throw new InvalidGraphWalkException(
+		                "The edgeList does not constitute to a feasible path. Conflicting edge: "
+		                    + edge);
+		        u = Graphs.getOppositeVertex(graph, edge, u);
+		    }
+		    if (!u.equals(endVertex))
+		        throw new InvalidGraphWalkException(
+		            "The path defined by the edgeList does not end in the endVertex.");
+		}
+	}
+
+	private void verify_2RefactorBicho() {
+		if (!startVertex.equals(vertexList.get(0)))
+		    throw new InvalidGraphWalkException(
+		        "The start vertex must be the first vertex in the vertex list");
+		if (!endVertex.equals(vertexList.get(vertexList.size() - 1)))
+		    throw new InvalidGraphWalkException(
+		        "The end vertex must be the last vertex in the vertex list");
+		// All vertices and edges in the path must be contained in the graph
+		if (!graph.vertexSet().containsAll(vertexList))
+		    throw new InvalidGraphWalkException(
+		        "Not all vertices in the path are contained in the graph");
+	}
+
+	private void verify_RefactorBicho() {
+		if (edgeList == null) {
+		    // Verify sequence
+		    Iterator<V> it = vertexList.iterator();
+		    V u = it.next();
+		    while (it.hasNext()) {
+		        V v = it.next();
+		        if (graph.getEdge(u, v) == null)
+		            throw new InvalidGraphWalkException(
+		                "The vertexList does not constitute to a feasible path. Edge (" + u
+		                    + "," + v + " does not exist in the graph.");
+		        u = v;
+		    }
+		}
+	}
 
     /**
      * Convenience method which creates an empty walk.

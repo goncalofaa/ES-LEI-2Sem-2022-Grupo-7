@@ -300,20 +300,15 @@ public class DirectedScaleFreeGraphGenerator<V, E>
     @Override
     public void generateGraph(Graph<V, E> target, Map<String, V> resultMap)
     {
-        if (this.allowingMultipleEdges && !target.getType().isAllowingMultipleEdges()) {
-            throw new IllegalArgumentException(
-                "Generator allows Multiple Edges while graph does not. Consider changing this generator parameters or the target graph type.");
-        }
-        if (this.allowingSelfLoops && !target.getType().isAllowingSelfLoops()) {
-            throw new IllegalArgumentException(
-                "Generator allows Self loops while graph does not. Consider changing this generator parameters or the target graph type.");
-        }
+        generateMethodRefactor_MetodoBicho(target);
+        
+        if (targetEdges == 0 || (targetEdges < 0 && targetNodes == 0))
+            return;
 
         Set<V> newNodesSet = new HashSet<>();
         Set<E> newEdgesSet = new HashSet<>();
 
-        if (targetEdges == 0 || (targetEdges < 0 && targetNodes == 0))
-            return;
+      
         V initV = target.addVertex();
         newNodesSet.add(initV);
 
@@ -384,6 +379,18 @@ public class DirectedScaleFreeGraphGenerator<V, E>
             newEdgesSet.add(e);
         }
     }
+
+	private void generateMethodRefactor_MetodoBicho(Graph<V, E> target) {
+		if (this.allowingMultipleEdges && !target.getType().isAllowingMultipleEdges()) {
+            throw new IllegalArgumentException(
+                "Generator allows Multiple Edges while graph does not. Consider changing this generator parameters or the target graph type.");
+        }
+        if (this.allowingSelfLoops && !target.getType().isAllowingSelfLoops()) {
+            throw new IllegalArgumentException(
+                "Generator allows Self loops while graph does not. Consider changing this generator parameters or the target graph type.");
+        }
+       
+	}
 
     /**
      * Select a vertex from the currently available vertices, using the passed bias.
