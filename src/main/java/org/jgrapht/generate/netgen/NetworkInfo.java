@@ -131,21 +131,6 @@ public class NetworkInfo<V, E>
     }
 
     /**
-     * Return a list containing network t-sinks.
-     *
-     * @return a list containing network t-sinks.
-     */
-    public List<V> getTransshipmentSinks()
-    {
-        return Collections
-            .unmodifiableList(
-                vertices
-                    .subList(
-                        config.getNodeNum() - config.getSinkNum(),
-                        config.getNodeNum() - config.getPureSinkNum()));
-    }
-
-    /**
      * Returns a list containing network sinks (pure sinks + t-sinks).
      *
      * @return a list containing network sinks.

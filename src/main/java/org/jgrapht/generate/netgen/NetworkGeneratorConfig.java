@@ -17,6 +17,7 @@
  */
 package org.jgrapht.generate.netgen;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.jgrapht.generate.netgen.NetworkGenerator.Node;
@@ -650,6 +651,15 @@ public class NetworkGeneratorConfig<V, E>
 	        .subList(
 	            getSourceNum() + getTransshipNodeNum(),
 	            networkGenerator.nodes.size() - getPureSinkNum());
+	}
+
+	/**
+	 * Return a list containing network t-sinks.
+	 * @return  a list containing network t-sinks.
+	 */
+	public List<V> getTransshipmentSinks(NetworkInfo netInfo) {
+		return Collections.unmodifiableList(netInfo.vertices.subList(this.getNodeNum() - this.getSinkNum(),
+				this.getNodeNum() - this.getPureSinkNum()));
 	}
 
 }
