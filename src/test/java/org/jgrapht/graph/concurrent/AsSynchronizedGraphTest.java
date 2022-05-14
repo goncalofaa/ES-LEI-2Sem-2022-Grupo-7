@@ -42,7 +42,7 @@ public class AsSynchronizedGraphTest
     @Test
     public void testAddVertex()
     {
-        g = new AsSynchronizedGraph.Builder<Integer, DefaultEdge>()
+        g = new ASG_Builder<Integer, DefaultEdge>()
             .build(new SimpleGraph<>(DefaultEdge.class));
         ordersList = new Vector<>();
         for (int i = 0; i < 20; i++) {
@@ -69,7 +69,7 @@ public class AsSynchronizedGraphTest
     @Test
     public void testAddEdge()
     {
-        g = new AsSynchronizedGraph.Builder<Integer, DefaultEdge>()
+        g = new ASG_Builder<Integer, DefaultEdge>()
             .cacheEnable().build(new SimpleGraph<>(DefaultEdge.class));
         ArrayList<DefaultEdge> list = new ArrayList<>();
         for (int i = 0; i < 1000; i++)
@@ -106,7 +106,7 @@ public class AsSynchronizedGraphTest
     @Test
     public void testRemoveEdge()
     {
-        g = new AsSynchronizedGraph.Builder<Integer, DefaultEdge>()
+        g = new ASG_Builder<Integer, DefaultEdge>()
             .cacheEnable().build(new SimpleGraph<>(DefaultEdge.class));
         edges = new ArrayList<>();
         TestSuite ts = new ActiveTestSuite();
@@ -133,7 +133,7 @@ public class AsSynchronizedGraphTest
     @Test
     public void testRemoveVertex()
     {
-        g = new AsSynchronizedGraph.Builder<Integer, DefaultEdge>()
+        g = new ASG_Builder<Integer, DefaultEdge>()
             .cacheEnable().build(new DirectedPseudograph<>(DefaultEdge.class));
         vertices = new ArrayList<>();
         TestSuite ts = new ActiveTestSuite();
@@ -168,7 +168,7 @@ public class AsSynchronizedGraphTest
     @Test
     public void testOthers()
     {
-        g = new AsSynchronizedGraph.Builder<Integer, DefaultEdge>()
+        g = new ASG_Builder<Integer, DefaultEdge>()
             .cacheDisable().build(new Pseudograph<>(DefaultEdge.class));
         Set<Integer> vertSet = g.vertexSet();
         Set<DefaultEdge> edgeSet = g.edgeSet();
@@ -292,7 +292,7 @@ public class AsSynchronizedGraphTest
     @Test
     public void testCopyless()
     {
-        g = new AsSynchronizedGraph.Builder<Integer, DefaultEdge>()
+        g = new ASG_Builder<Integer, DefaultEdge>()
             .setCopyless().build(new Pseudograph<>(DefaultEdge.class));
         vertices = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {

@@ -29,8 +29,20 @@ package org.jgrapht.generate.netgen;
  */
 public class NetworkGeneratorConfigBuilder
 {
-    private NetworkGeneratorConfigBuilderProduct networkGeneratorConfigBuilderProduct = new NetworkGeneratorConfigBuilderProduct();
-	int maxCost = 0;
+    int nodeNum = 0;
+    int arcNum = 0;
+    int sourceNum = 0;
+    int sinkNum = 0;
+    int tSourceNum = 0;
+    int tSinkNum = 0;
+    int totalSupply = 0;
+    int minCap = 0;
+    int maxCap = 0;
+    int minCost = 0;
+    int maxCost = 0;
+    int percentCapacitated = 100;
+    int percentWithInfCost = 0;
+
     /**
      * Builds the {@link NetworkGeneratorConfig}. This method performs remaining parameter
      * validation.
@@ -39,45 +51,89 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfig build()
     {
-        if (networkGeneratorConfigBuilderProduct.getNodeNum() <= 0) {
-            networkGeneratorConfigBuilderProduct.invalidParam("Number of nodes must be positive");
-        } else if (networkGeneratorConfigBuilderProduct.getArcNum() <= 0) {
-            networkGeneratorConfigBuilderProduct.invalidParam("Number of arcs must be positive");
-        } else if (networkGeneratorConfigBuilderProduct.getSourceNum() <= 0) {
-            networkGeneratorConfigBuilderProduct.invalidParam("Number of sources must be positive");
-        } else if (networkGeneratorConfigBuilderProduct.getSinkNum() <= 0) {
-            networkGeneratorConfigBuilderProduct.invalidParam("Number of sinks must be positive");
-        } else if (networkGeneratorConfigBuilderProduct.getSourceNum() + networkGeneratorConfigBuilderProduct.getSinkNum() > networkGeneratorConfigBuilderProduct.getNodeNum()) {
-            networkGeneratorConfigBuilderProduct.invalidParam("Number of sources and sinks must not exceed the number of nodes");
-        } else if (networkGeneratorConfigBuilderProduct.getTSourceNum() > networkGeneratorConfigBuilderProduct.getSourceNum()) {
-            networkGeneratorConfigBuilderProduct.invalidParam(
+        if (nodeNum <= 0) {
+            invalidParam("Number of nodes must be positive");
+        } else if (arcNum <= 0) {
+            invalidParam("Number of arcs must be positive");
+        } else if (sourceNum <= 0) {
+            invalidParam("Number of sources must be positive");
+        } else if (sinkNum <= 0) {
+            invalidParam("Number of sinks must be positive");
+        } else if (sourceNum + sinkNum > nodeNum) {
+            invalidParam("Number of sources and sinks must not exceed the number of nodes");
+        } else if (tSourceNum > sourceNum) {
+            invalidParam(
                 "Number of transhipment sources must not exceed the overall number of sources");
-        } else if (networkGeneratorConfigBuilderProduct.getTSinkNum() > networkGeneratorConfigBuilderProduct.getSinkNum()) {
-            networkGeneratorConfigBuilderProduct.invalidParam(
+        } else if (tSinkNum > sinkNum) {
+            invalidParam(
                 "Number of transhipment sinks must not exceed the overall number of sinks");
-        } else if (networkGeneratorConfigBuilderProduct.getTotalSupply() < Math.max(networkGeneratorConfigBuilderProduct.getSourceNum(), networkGeneratorConfigBuilderProduct.getSinkNum())) {
-            networkGeneratorConfigBuilderProduct.invalidParam(
+        } else if (totalSupply < Math.max(sourceNum, sinkNum)) {
+            invalidParam(
                 "Total supply must not be less than the number of sources and the number of sinks");
-        } else if (networkGeneratorConfigBuilderProduct.getMinCap() > networkGeneratorConfigBuilderProduct.getMaxCap()) {
-            networkGeneratorConfigBuilderProduct.invalidParam("Minimum capacity must not exceed the maximum capacity");
-        } else if (networkGeneratorConfigBuilderProduct.getMinCap() <= 0) {
-            networkGeneratorConfigBuilderProduct.invalidParam("Minimum capacity must be positive");
-        } else if (networkGeneratorConfigBuilderProduct.getMinCost() > maxCost) {
-            networkGeneratorConfigBuilderProduct.invalidParam("Minimum cost must not exceed the maximum cost");
+        } else if (minCap > maxCap) {
+            invalidParam("Minimum capacity must not exceed the maximum capacity");
+        } else if (minCap <= 0) {
+            invalidParam("Minimum capacity must be positive");
+        } else if (minCost > maxCost) {
+            invalidParam("Minimum cost must not exceed the maximum cost");
         }
-        int tNodeNum = networkGeneratorConfigBuilderProduct.getNodeNum() - networkGeneratorConfigBuilderProduct.getSourceNum() - networkGeneratorConfigBuilderProduct.getSinkNum();
-        long minArcNum = NetworkGeneratorConfig.getMinimumArcNum(networkGeneratorConfigBuilderProduct.getSourceNum(), tNodeNum, networkGeneratorConfigBuilderProduct.getSinkNum());
+        int tNodeNum = nodeNum - sourceNum - sinkNum;
+        long minArcNum = NetworkGeneratorConfig.getMinimumArcNum(sourceNum, tNodeNum, sinkNum);
         long maxArcNum = NetworkGeneratorConfig
-            .getMaximumArcNum(networkGeneratorConfigBuilderProduct.getSourceNum(), networkGeneratorConfigBuilderProduct.getTSourceNum(), tNodeNum, networkGeneratorConfigBuilderProduct.getTSinkNum(), networkGeneratorConfigBuilderProduct.getSinkNum());
+            .getMaximumArcNum(sourceNum, tSourceNum, tNodeNum, tSinkNum, sinkNum);
 
-        if (networkGeneratorConfigBuilderProduct.getArcNum() < minArcNum) {
-            networkGeneratorConfigBuilderProduct.invalidParam("Too few arcs to generate a valid problem");
-        } else if (networkGeneratorConfigBuilderProduct.getArcNum() > maxArcNum) {
-            networkGeneratorConfigBuilderProduct.invalidParam("Too many arcs to generate a valid problem");
+        if (arcNum < minArcNum) {
+            invalidParam("Too few arcs to generate a valid problem");
+        } else if (arcNum > maxArcNum) {
+            invalidParam("Too many arcs to generate a valid problem");
         }
         return new NetworkGeneratorConfig(
-            networkGeneratorConfigBuilderProduct.getNodeNum(), networkGeneratorConfigBuilderProduct.getArcNum(), networkGeneratorConfigBuilderProduct.getSourceNum(), networkGeneratorConfigBuilderProduct.getSinkNum(), networkGeneratorConfigBuilderProduct.getTSourceNum(), networkGeneratorConfigBuilderProduct.getTSinkNum(), networkGeneratorConfigBuilderProduct.getTotalSupply(), networkGeneratorConfigBuilderProduct.getMinCap(), networkGeneratorConfigBuilderProduct.getMaxCap(),
-            networkGeneratorConfigBuilderProduct.getMinCost(), maxCost, networkGeneratorConfigBuilderProduct.getPercentCapacitated(), networkGeneratorConfigBuilderProduct.getPercentWithInfCost());
+            nodeNum, arcNum, sourceNum, sinkNum, tSourceNum, tSinkNum, totalSupply, minCap, maxCap,
+            minCost, maxCost, percentCapacitated, percentWithInfCost);
+    }
+
+    /**
+     * Throws {@code IllegalArgumentException} with the specified {@code message}.
+     *
+     * @param message a message for the exception.
+     */
+    private void invalidParam(String message)
+    {
+        throw new IllegalArgumentException(message);
+    }
+
+    /**
+     * Perform node parameter validation.
+     *
+     * @param value the value of a node parameter.
+     * @return {@code value}
+     */
+    private int checkNodeConstraint(int value)
+    {
+        if (value > NetworkGenerator.MAX_NODE_NUM) {
+            invalidParam(
+                String.format("Number of nodes must not exceed %d", NetworkGenerator.MAX_NODE_NUM));
+        }
+        return value;
+    }
+
+    /**
+     * Performs capacity and cost parameter valiation.
+     *
+     * @param value the value of the capacity or cost parameter
+     * @return {@code value}
+     */
+    private int checkCapacityCostConstraint(int value)
+    {
+        if (Math.abs(value) > NetworkGenerator.CAPACITY_COST_BOUND) {
+            invalidParam(
+                String
+                    .format(
+                        "Arcs capacities and cost must be between -%d and %d",
+                        NetworkGenerator.CAPACITY_COST_BOUND,
+                        NetworkGenerator.CAPACITY_COST_BOUND));
+        }
+        return value;
     }
 
     /**
@@ -103,19 +159,19 @@ public class NetworkGeneratorConfigBuilder
         int transshipSinkNum, int totalSupply, int minCap, int maxCap, int minCost, int maxCost,
         int percentCapacitated, int percentWithInfCost)
     {
-        networkGeneratorConfigBuilderProduct.setNodeNum(nodeNum, this);
-        networkGeneratorConfigBuilderProduct.setArcNum(arcNum, this);
-        networkGeneratorConfigBuilderProduct.setSourceNum(sourceNum, this);
-        networkGeneratorConfigBuilderProduct.setSinkNum(sinkNum, this);
-        networkGeneratorConfigBuilderProduct.setTSourceNum(transshipSourceNum, this);
-        networkGeneratorConfigBuilderProduct.setTSinkNum(transshipSinkNum, this);
-        networkGeneratorConfigBuilderProduct.setTotalSupply(totalSupply, this);
-        networkGeneratorConfigBuilderProduct.setMinCap(minCap, this);
-        networkGeneratorConfigBuilderProduct.setMaxCap(maxCap, this);
-        networkGeneratorConfigBuilderProduct.setMinCost(minCost, this);
+        setNodeNum(nodeNum);
+        setArcNum(arcNum);
+        setSourceNum(sourceNum);
+        setSinkNum(sinkNum);
+        setTSourceNum(transshipSourceNum);
+        setTSinkNum(transshipSinkNum);
+        setTotalSupply(totalSupply);
+        setMinCap(minCap);
+        setMaxCap(maxCap);
+        setMinCost(minCost);
         setMaxCost(maxCost);
-        networkGeneratorConfigBuilderProduct.setPercentCapacitated(percentCapacitated, this);
-        networkGeneratorConfigBuilderProduct.setPercentWithInfCost(percentWithInfCost, this);
+        setPercentCapacitated(percentCapacitated);
+        setPercentWithInfCost(percentWithInfCost);
         return this;
     }
 
@@ -225,7 +281,7 @@ public class NetworkGeneratorConfigBuilder
     public NetworkGeneratorConfigBuilder setBipartiteMatchingProblemParams(
         int nodeNum, int arcNum, int minCost, int maxCost)
     {
-        networkGeneratorConfigBuilderProduct.setBipartiteMatchingProblemParams(nodeNum, arcNum, minCost, maxCost, 0, this);
+        setBipartiteMatchingProblemParams(nodeNum, arcNum, minCost, maxCost, 0);
         return this;
     }
 
@@ -242,8 +298,13 @@ public class NetworkGeneratorConfigBuilder
     public NetworkGeneratorConfigBuilder setBipartiteMatchingProblemParams(
         int nodeNum, int arcNum, int minCost, int maxCost, int percentWithInfCost)
     {
-        return networkGeneratorConfigBuilderProduct.setBipartiteMatchingProblemParams(nodeNum, arcNum, minCost, maxCost,
-				percentWithInfCost, this);
+        if ((nodeNum & 1) != 0) {
+            invalidParam("Assignment problem must have even number of nodes");
+        }
+        setParams(
+            nodeNum, arcNum, nodeNum / 2, nodeNum / 2, 0, 0, nodeNum / 2, 1, 1, minCost, maxCost,
+            100, percentWithInfCost);
+        return this;
     }
 
     /**
@@ -254,7 +315,11 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setNodeNum(int nodeNum)
     {
-        return networkGeneratorConfigBuilderProduct.setNodeNum(nodeNum, this);
+        if (nodeNum <= 0) {
+            invalidParam("Number of nodes must be positive");
+        }
+        this.nodeNum = checkNodeConstraint(nodeNum);
+        return this;
     }
 
     /**
@@ -265,7 +330,11 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setArcNum(int arcNum)
     {
-        return networkGeneratorConfigBuilderProduct.setArcNum(arcNum, this);
+        if (arcNum > NetworkGenerator.MAX_ARC_NUM) {
+            invalidParam(String.format("Number of arcs must not exceed %d", arcNum));
+        }
+        this.arcNum = arcNum;
+        return this;
     }
 
     /**
@@ -276,7 +345,11 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setSourceNum(int sourceNum)
     {
-        return networkGeneratorConfigBuilderProduct.setSourceNum(sourceNum, this);
+        if (sourceNum <= 0) {
+            invalidParam("Number of sources must be positive");
+        }
+        this.sourceNum = checkNodeConstraint(sourceNum);
+        return this;
     }
 
     /**
@@ -287,7 +360,11 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setSinkNum(int sinkNum)
     {
-        return networkGeneratorConfigBuilderProduct.setSinkNum(sinkNum, this);
+        if (sinkNum <= 0) {
+            invalidParam("Number of sinks must be positive");
+        }
+        this.sinkNum = checkNodeConstraint(sinkNum);
+        return this;
     }
 
     /**
@@ -298,7 +375,11 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setTSourceNum(int tSourceNum)
     {
-        return networkGeneratorConfigBuilderProduct.setTSourceNum(tSourceNum, this);
+        if (tSourceNum < 0) {
+            invalidParam("Number of transshipment sources must be non-negative");
+        }
+        this.tSourceNum = checkNodeConstraint(tSourceNum);
+        return this;
     }
 
     /**
@@ -309,7 +390,11 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setTSinkNum(int tSinkNum)
     {
-        return networkGeneratorConfigBuilderProduct.setTSinkNum(tSinkNum, this);
+        if (tSinkNum < 0) {
+            invalidParam("Number of transshipment sinks must be non-negative");
+        }
+        this.tSinkNum = checkNodeConstraint(tSinkNum);
+        return this;
     }
 
     /**
@@ -320,7 +405,12 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setTotalSupply(int totalSupply)
     {
-        return networkGeneratorConfigBuilderProduct.setTotalSupply(totalSupply, this);
+        if (totalSupply > NetworkGenerator.MAX_SUPPLY) {
+            invalidParam(
+                String.format("Total supply must not exceed %d", NetworkGenerator.MAX_NODE_NUM));
+        }
+        this.totalSupply = totalSupply;
+        return this;
     }
 
     /**
@@ -331,7 +421,11 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setMinCap(int minCap)
     {
-        return networkGeneratorConfigBuilderProduct.setMinCap(minCap, this);
+        if (minCap < 0) {
+            invalidParam("Minimum arc capacity must be non-negative");
+        }
+        this.minCap = checkCapacityCostConstraint(minCap);
+        return this;
     }
 
     /**
@@ -342,7 +436,11 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setMaxCap(int maxCap)
     {
-        return networkGeneratorConfigBuilderProduct.setMaxCap(maxCap, this);
+        if (maxCap < 0) {
+            invalidParam("Maximum arc capacity must be non-negative");
+        }
+        this.maxCap = checkCapacityCostConstraint(maxCap);
+        return this;
     }
 
     /**
@@ -353,7 +451,8 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setMinCost(int minCost)
     {
-        return networkGeneratorConfigBuilderProduct.setMinCost(minCost, this);
+        this.minCost = checkCapacityCostConstraint(minCost);
+        return this;
     }
 
     /**
@@ -364,7 +463,7 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setMaxCost(int maxCost)
     {
-        this.maxCost = networkGeneratorConfigBuilderProduct.checkCapacityCostConstraint(maxCost);
+        this.maxCost = checkCapacityCostConstraint(maxCost);
         return this;
     }
 
@@ -376,7 +475,11 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setPercentCapacitated(int percentCapacitated)
     {
-        return networkGeneratorConfigBuilderProduct.setPercentCapacitated(percentCapacitated, this);
+        if (percentCapacitated < 0 || percentCapacitated > 100) {
+            invalidParam("Percent of capacitated arcs must be between 0 and 100 inclusive");
+        }
+        this.percentCapacitated = percentCapacitated;
+        return this;
     }
 
     /**
@@ -387,6 +490,10 @@ public class NetworkGeneratorConfigBuilder
      */
     public NetworkGeneratorConfigBuilder setPercentWithInfCost(int percentWithInfCost)
     {
-        return networkGeneratorConfigBuilderProduct.setPercentWithInfCost(percentWithInfCost, this);
+        if (percentWithInfCost < 0 || percentWithInfCost > 100) {
+            invalidParam("Percent of arcs with infinite cost must be between 0 and 100 inclusive");
+        }
+        this.percentWithInfCost = percentWithInfCost;
+        return this;
     }
 }
