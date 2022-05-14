@@ -52,7 +52,7 @@ public class DefaultGraphType
     private final boolean allowsCycles;
     private final boolean modifiable;
 
-    private DefaultGraphType(
+    public DefaultGraphType(
         boolean directed, boolean undirected, boolean selfLoops, boolean multipleEdges,
         boolean weighted, boolean allowsCycles, boolean modifiable)
     {
