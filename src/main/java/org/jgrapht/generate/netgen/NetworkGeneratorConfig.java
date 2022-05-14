@@ -17,6 +17,10 @@
  */
 package org.jgrapht.generate.netgen;
 
+import java.util.List;
+
+import org.jgrapht.generate.netgen.NetworkGenerator.Node;
+
 /**
  * Configuration class to specify network parameters for the {@link NetworkGenerator}. Any valid
  * configuration specifies a minimum cost flow network to generate. Under additional constraints the
@@ -117,13 +121,15 @@ package org.jgrapht.generate.netgen;
  * meaningful error messages in the cases something is going wrong.
  *
  * @author Timofey Chudakov
+ * @param <V>
+ * @param <E>
  * @see NetworkGenerator
  * @see NetworkGeneratorConfigBuilder
  * @see org.jgrapht.alg.flow.mincost.MinimumCostFlowProblem
  * @see MaximumFlowProblem
  * @see BipartiteMatchingProblem
  */
-public class NetworkGeneratorConfig
+public class NetworkGeneratorConfig<V, E>
 {
     private final int nodeNum;
     private final int arcNum;
@@ -630,6 +636,20 @@ public class NetworkGeneratorConfig
 	    } else {
 	        return networkGenerator.generateBetween(networkGenerator.config.getMinCost(), networkGenerator.config.getMaxCost());
 	    }
+	}
+
+	/**
+	 * Returns a list containing generated transshipment sinks.
+	 *
+	 * @param networkGenerator TODO
+	 * @return a list containing generated transshipment sinks.
+	 */
+	List<NetworkGenerator<V, E>.Node> getTransshipSinks(NetworkGenerator networkGenerator)
+	{
+	    return networkGenerator.nodes
+	        .subList(
+	            getSourceNum() + getTransshipNodeNum(),
+	            networkGenerator.nodes.size() - getPureSinkNum());
 	}
 
 }

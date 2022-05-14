@@ -158,7 +158,7 @@ public class NetworkGenerator<V, E>
      * sourceNum + transshipNodeNum, nodeNum - pureSinkNum ) - transshipment sink nodes - [ nodeNum
      * - pureSinkNum, nodeNum ) - pure sink nodes
      */
-    private List<Node> nodes;
+    List<Node> nodes;
     /**
      * Mapping for converting graph vertices to their internal representation as nodes.
      */
@@ -626,9 +626,9 @@ public class NetworkGenerator<V, E>
         generateArcs(getTransshipNodes(), getTransshipNodes(), arcNumDistribution.get(4));
         generateArcs(getTransshipNodes(), getSinks(), arcNumDistribution.get(5));
 
-        generateArcs(getTransshipSinks(), getTransshipSources(), arcNumDistribution.get(6));
-        generateArcs(getTransshipSinks(), getTransshipNodes(), arcNumDistribution.get(7));
-        generateArcs(getTransshipSinks(), getSinks(), arcNumDistribution.get(8));
+        generateArcs(config.getTransshipSinks(this), getTransshipSources(), arcNumDistribution.get(6));
+        generateArcs(config.getTransshipSinks(this), getTransshipNodes(), arcNumDistribution.get(7));
+        generateArcs(config.getTransshipSinks(this), getSinks(), arcNumDistribution.get(8));
 
         assert config.getArcNum() - graph.edgeSet().size() == 0;
     }
@@ -878,19 +878,6 @@ public class NetworkGenerator<V, E>
     }
 
     /**
-     * Returns a list containing generated transshipment sinks.
-     *
-     * @return a list containing generated transshipment sinks.
-     */
-    private List<Node> getTransshipSinks()
-    {
-        return nodes
-            .subList(
-                config.getSourceNum() + config.getTransshipNodeNum(),
-                nodes.size() - config.getPureSinkNum());
-    }
-
-    /**
      * Returns a list containing generated sinks (pure sinks + t-sinks).
      *
      * @return a list containing generated sinks.
@@ -957,7 +944,7 @@ public class NetworkGenerator<V, E>
      * Internal representation of network nodes. This class is used to store auxiliary information
      * during generation process.
      */
-    private class Node
+    class Node
     {
         /**
          * Graph vertex counterpart of this node.
