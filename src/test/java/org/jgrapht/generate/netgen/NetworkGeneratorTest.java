@@ -65,7 +65,7 @@ public class NetworkGeneratorTest
         List<V> pureSinks = networkInfo.getPureSinks();
         assertEquals(config.getPureSinkNum(), pureSinks.size());
 
-        List<V> tSinks = networkInfo.getTransshipmentSinks();
+        List<V> tSinks = config.getTransshipmentSinks(networkInfo);
         assertEquals(config.getTransshipSinkNum(), tSinks.size());
 
         List<List<V>> vertexClasses = new ArrayList<>();
