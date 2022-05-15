@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;&#10;Tive de dar refactor pela 2 vez pq o do JDeodorant deu erro&#10;Tirei um dos dos refactores do miguel pq estava a dar erro">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_14_2022_6_11_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_14_2022_6_11_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="Commit Final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jgrapht/alg/connectivity/TreeDynamicConnectivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/alg/connectivity/TreeDynamicConnectivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jgrapht/alg/util/AliasMethodSamplerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jgrapht/alg/util/AliasMethodSamplerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jgrapht/util/AVLTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jgrapht/util/AVLTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/DefaultListenableGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/DefaultListenableGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652569363550</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Commit Final">
+      <created>1652574983362</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1652574983362</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,6 +149,7 @@
     <MESSAGE value="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;NetworkGeneratorConfigBuilderProduct&#10;Refactor atraves do JDeodorant" />
     <MESSAGE value="teste" />
     <MESSAGE value="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;&#10;Tive de dar refactor pela 2 vez pq o do JDeodorant deu erro&#10;Tirei um dos dos refactores do miguel pq estava a dar erro" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;&#10;Tive de dar refactor pela 2 vez pq o do JDeodorant deu erro&#10;Tirei um dos dos refactores do miguel pq estava a dar erro" />
+    <MESSAGE value="Commit Final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit Final" />
   </component>
 </project>
