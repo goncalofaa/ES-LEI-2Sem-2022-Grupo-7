@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="Commit Final">
+    <list default="true" id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="GodClass org.jgrapht.graph DefaultListenableGraph.java&#10;Refactors do Miguel, estavam a dar um erro estranho">
+      <change afterPath="$PROJECT_DIR$/elementosGrupo.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/excel_metricas_codesmells_refactors_cobertura_do_testes.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/DefaultListenableGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/DefaultListenableGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +41,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\João Bicho\Desktop\ESProjjjj" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -127,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652574983362</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="GodClass org.jgrapht.graph DefaultListenableGraph.java&#10;Refactors do Miguel, estavam a dar um erro estranho">
+      <created>1652629489903</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1652629489903</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,6 +163,7 @@
     <MESSAGE value="teste" />
     <MESSAGE value="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;&#10;Tive de dar refactor pela 2 vez pq o do JDeodorant deu erro&#10;Tirei um dos dos refactores do miguel pq estava a dar erro" />
     <MESSAGE value="Commit Final" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit Final" />
+    <MESSAGE value="GodClass org.jgrapht.graph DefaultListenableGraph.java&#10;Refactors do Miguel, estavam a dar um erro estranho" />
+    <option name="LAST_COMMIT_MESSAGE" value="GodClass org.jgrapht.graph DefaultListenableGraph.java&#10;Refactors do Miguel, estavam a dar um erro estranho" />
   </component>
 </project>
