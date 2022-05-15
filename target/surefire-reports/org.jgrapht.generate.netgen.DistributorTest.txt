@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.jgrapht.generate.netgen.DistributorTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s - in org.jgrapht.generate.netgen.DistributorTest

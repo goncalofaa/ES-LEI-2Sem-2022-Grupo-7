@@ -1,0 +1,4 @@
+package org.jgrapht.perf.matching.generated;
+public class MaximumCardinalityBipartiteMatchingPerformanceTest_HopcroftKarpMaximumCardinalityBipartiteMatchingBenchmark_jmhType extends MaximumCardinalityBipartiteMatchingPerformanceTest_HopcroftKarpMaximumCardinalityBipartiteMatchingBenchmark_jmhType_B3 {
+}
+

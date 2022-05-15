@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.jgrapht.alg.matching.blossom.v5.KolmogorovWeightedMatchingTest
+-------------------------------------------------------------------------------
+Tests run: 912, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.994 s - in org.jgrapht.alg.matching.blossom.v5.KolmogorovWeightedMatchingTest

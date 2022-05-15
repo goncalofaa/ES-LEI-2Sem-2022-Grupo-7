@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.jgrapht.graph.EqualsAndHashCodeTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in org.jgrapht.graph.EqualsAndHashCodeTest
