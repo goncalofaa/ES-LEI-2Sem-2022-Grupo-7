@@ -22,6 +22,7 @@ import org.junit.*;
 import java.util.*;
 import java.util.stream.*;
 
+import static org.jgrapht.util.AVLTree.TreeNode;
 import static org.junit.Assert.*;
 
 /**

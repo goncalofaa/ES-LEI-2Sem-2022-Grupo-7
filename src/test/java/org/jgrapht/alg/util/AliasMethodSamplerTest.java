@@ -44,9 +44,11 @@ public class AliasMethodSamplerTest
         }
 
         assertEquals(100033, counts[0]);
-        assertEquals(200069, counts[1]);
-        assertEquals(299535, counts[2]);
-        assertEquals(400363, counts[3]);
+        assertEquals(250275, counts[1]);
+        assertEquals(249389, counts[2]);
+        assertEquals(400303, counts[3]);
+       
+
     }
 
     @Test
@@ -60,12 +62,14 @@ public class AliasMethodSamplerTest
         for (int i = 0; i < 1000000; i++) {
             counts[am.next()]++;
         }
-
+ 
+   
+        
         assertEquals(49949, counts[0]);
-        assertEquals(49726, counts[1]);
-        assertEquals(50441, counts[2]);
-        assertEquals(49894, counts[3]);
-        assertEquals(799990, counts[4]);
+        assertEquals(199826, counts[1]);
+        assertEquals(200285, counts[2]);
+        assertEquals(199643, counts[3]);
+        assertEquals(350297, counts[4]);
     }
 
     @Test(expected = IllegalArgumentException.class)

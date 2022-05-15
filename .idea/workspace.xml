@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;&#10;Tive de dar refactor pela 2 vez pq o do JDeodorant deu erro&#10;Tirei um dos dos refactores do miguel pq estava a dar erro">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_14_2022_6_11_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_14_2022_6_11_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jgrapht/generate/netgen/NetworkGeneratorConfigBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/generate/netgen/NetworkGeneratorConfigBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/concurrent/AsSynchronizedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/concurrent/AsSynchronizedGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/jgrapht/graph/concurrent/AsSynchronizedGraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jgrapht/graph/concurrent/AsSynchronizedGraphTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/jgrapht/alg/connectivity/TreeDynamicConnectivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/alg/connectivity/TreeDynamicConnectivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jgrapht/alg/util/AliasMethodSamplerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jgrapht/alg/util/AliasMethodSamplerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/jgrapht/util/AVLTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/jgrapht/util/AVLTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="bicho" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
