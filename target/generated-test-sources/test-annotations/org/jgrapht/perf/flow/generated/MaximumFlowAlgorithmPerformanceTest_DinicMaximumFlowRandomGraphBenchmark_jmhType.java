@@ -1,0 +1,4 @@
+package org.jgrapht.perf.flow.generated;
+public class MaximumFlowAlgorithmPerformanceTest_DinicMaximumFlowRandomGraphBenchmark_jmhType extends MaximumFlowAlgorithmPerformanceTest_DinicMaximumFlowRandomGraphBenchmark_jmhType_B3 {
+}
+

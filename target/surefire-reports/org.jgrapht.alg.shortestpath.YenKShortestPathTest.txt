@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.jgrapht.alg.shortestpath.YenKShortestPathTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.142 s - in org.jgrapht.alg.shortestpath.YenKShortestPathTest

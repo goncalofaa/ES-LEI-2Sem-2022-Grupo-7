@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.jgrapht.graph.DirectedAcyclicGraphTest
+-------------------------------------------------------------------------------
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.504 s - in org.jgrapht.graph.DirectedAcyclicGraphTest

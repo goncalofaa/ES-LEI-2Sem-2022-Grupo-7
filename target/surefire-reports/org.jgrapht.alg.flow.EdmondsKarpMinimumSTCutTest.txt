@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.jgrapht.alg.flow.EdmondsKarpMinimumSTCutTest
+-------------------------------------------------------------------------------
+Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.626 s - in org.jgrapht.alg.flow.EdmondsKarpMinimumSTCutTest

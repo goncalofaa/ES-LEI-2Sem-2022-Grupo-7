@@ -1,0 +1,4 @@
+package org.jgrapht.perf.graph.generated;
+public class DirectedAcyclicGraphVSStaticGraphPerformanceTest_StaticGraphWithCycleDetectorRandomGraphBenchmark_jmhType extends DirectedAcyclicGraphVSStaticGraphPerformanceTest_StaticGraphWithCycleDetectorRandomGraphBenchmark_jmhType_B3 {
+}
+
