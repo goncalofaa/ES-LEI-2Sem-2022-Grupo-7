@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="GodClass org.jgrapht.graph DefaultListenableGraph.java&#10;Refactors do Miguel, estavam a dar um erro estranho">
-      <change afterPath="$PROJECT_DIR$/elementosGrupo.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/excel_metricas_codesmells_refactors_cobertura_do_testes.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/DefaultListenableGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jgrapht/graph/DefaultListenableGraph.java" afterDir="false" />
-    </list>
+    <list default="true" id="b16e36fc-9dfb-4061-8282-e49a14cf8973" name="Changes" comment="Commit Final" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652629489903</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Commit Final">
+      <created>1652633771662</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1652633771662</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,8 +164,8 @@
     <MESSAGE value="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;NetworkGeneratorConfigBuilderProduct&#10;Refactor atraves do JDeodorant" />
     <MESSAGE value="teste" />
     <MESSAGE value="Refactor GodClass org.jgrapht.generate.netgen NetworkGeneratorConfigBuilder&#10;&#10;Tive de dar refactor pela 2 vez pq o do JDeodorant deu erro&#10;Tirei um dos dos refactores do miguel pq estava a dar erro" />
-    <MESSAGE value="Commit Final" />
     <MESSAGE value="GodClass org.jgrapht.graph DefaultListenableGraph.java&#10;Refactors do Miguel, estavam a dar um erro estranho" />
-    <option name="LAST_COMMIT_MESSAGE" value="GodClass org.jgrapht.graph DefaultListenableGraph.java&#10;Refactors do Miguel, estavam a dar um erro estranho" />
+    <MESSAGE value="Commit Final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit Final" />
   </component>
 </project>
